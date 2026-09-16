@@ -67,6 +67,13 @@
         .portada-slide.activa {
             opacity: 1;
         }
+        .cta-frase {
+            display: inline-block;
+            transition: opacity .45s ease;
+        }
+        .cta-frase.sale {
+            opacity: 0;
+        }
         .pedido-pop {
             animation: pedido-pop .28s ease;
         }
@@ -209,8 +216,8 @@
                     <p class="text-base md:text-lg text-pasta-cream/90 mb-5 font-light max-w-lg mx-auto lg:mx-0">
                         Sabor casero, hecho con amor. Ingredientes frescos y recetas tradicionales directas a tu mesa.
                     </p>
-                    <a href="#sorrentinos" class="bg-white text-pasta-red hover:bg-gray-100 px-6 py-2.5 rounded-full font-semibold transition-colors inline-block shadow-xl">
-                        Armar mi pedido
+                    <a href="#sorrentinos" class="bg-white text-pasta-red hover:bg-gray-100 px-6 py-2.5 rounded-full font-semibold transition-colors inline-flex items-center justify-center shadow-xl min-w-[15.5rem]">
+                        <span id="cta-frase" class="cta-frase">Conocé los Productos</span>
                     </a>
                 </div>
                 <div id="portada" class="relative h-36 sm:h-48 lg:h-56 max-w-md mx-auto w-full">
@@ -1020,6 +1027,21 @@
         }
 
         aplicarCatalogo();
+
+        (function rotarCta() {
+            const frase = document.getElementById('cta-frase');
+            if (!frase) return;
+            const textos = ['Conocé los Productos', 'Generá tu pedido'];
+            let actual = 0;
+            setInterval(() => {
+                frase.classList.add('sale');
+                setTimeout(() => {
+                    actual = (actual + 1) % textos.length;
+                    frase.textContent = textos[actual];
+                    frase.classList.remove('sale');
+                }, 450);
+            }, 2800);
+        })();
 
         (function iniciarPortada() {
             const slides = [...document.querySelectorAll('#portada .portada-slide')];
