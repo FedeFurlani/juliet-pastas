@@ -517,7 +517,35 @@
         });
 
         // Carrito de compras State
+        const CART_KEY = 'juliet-pedido';
         const cart = {};
+
+        function guardarPedido() {
+            try {
+                localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            } catch (error) {
+                /* Si el navegador bloquea el almacenamiento, el pedido sigue en esta visita. */
+            }
+        }
+
+        function cargarPedido() {
+            try {
+                const data = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+                if (!data || typeof data !== 'object') return;
+                Object.entries(data).forEach(([id, item]) => {
+                    if (!item || typeof item !== 'object' || !item.name) return;
+                    cart[id] = {
+                        name: String(item.name),
+                        corto: String(item.corto || item.name),
+                        quantity: Math.max(0, Number(item.quantity) || 0),
+                        price: String(item.price || ''),
+                        img: String(item.img || '')
+                    };
+                });
+            } catch (error) {
+                /* Un pedido viejo o cortado no tiene que romper la página. */
+            }
+        }
         
         // Modal State
         let isCartOpen = false;
@@ -683,6 +711,7 @@
                     </div>
                 `;
                 actualizarPedido();
+                guardarPedido();
                 return;
             }
 
@@ -715,7 +744,12 @@
                 `;
             }
             actualizarPedido();
+            guardarPedido();
         }
+
+        cargarPedido();
+        updateCartCount();
+        renderCart();
 
         function actualizarPedido() {
             pintarTotal();
