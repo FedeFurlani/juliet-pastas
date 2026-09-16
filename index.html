@@ -618,14 +618,10 @@
         }
 
         function changeQuantity(id, delta) {
-            if (cart[id]) {
-                cart[id].quantity += delta;
-                if (cart[id].quantity <= 0) {
-                    delete cart[id];
-                }
-                updateCartCount();
-                renderCart();
-            }
+            if (!cart[id]) return;
+            cart[id].quantity = Math.max(0, cart[id].quantity + delta);
+            updateCartCount();
+            renderCart();
         }
 
         function renderCart() {
@@ -645,18 +641,23 @@
 
             for (const id in cart) {
                 const item = cart[id];
+                const foto = item.img
+                    ? `<img src="${escHtml(item.img)}" alt="" class="w-14 h-14 rounded-xl object-cover bg-gray-100 shrink-0">`
+                    : '';
                 container.innerHTML += `
-                    <div class="flex justify-between items-center mb-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
-                        <div class="flex-1 pr-4">
-                            <p class="font-bold text-sm text-pasta-dark">${escHtml(item.name)}</p>
-                            <p class="text-xs text-gray-500">${item.price ? escHtml(item.price) + ' c/u' : 'Bandeja de 12 unid.'}</p>
+                    <div class="flex items-center gap-3 mb-4 p-3 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                        ${foto}
+                        <div class="min-w-0 flex-1">
+                            <p class="font-bold text-sm text-pasta-dark leading-tight">${escHtml(item.corto || item.name)}</p>
+                            <p class="text-xs text-gray-500 mt-0.5">${item.price ? escHtml(item.price) + ' c/u' : 'Bandeja de 12 unid.'}</p>
+                            <button type="button" onclick="quitarProducto('${id}')" class="mt-1 text-xs text-gray-400 hover:text-red-600">Eliminar</button>
                         </div>
-                        <div class="flex items-center gap-3 bg-gray-50 rounded-full border border-gray-200 p-1">
-                            <button onclick="changeQuantity('${id}', -1)" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-pasta-red hover:bg-red-50 hover:text-red-700 transition-colors">
+                        <div class="flex items-center gap-1 bg-gray-50 rounded-full border border-gray-200 p-1 shrink-0">
+                            <button type="button" onclick="changeQuantity('${id}', -1)" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-pasta-red hover:bg-red-50 hover:text-red-700 transition-colors" aria-label="Quitar uno">
                                 <i class="fa-solid fa-minus text-xs"></i>
                             </button>
-                            <span class="font-bold text-sm w-4 text-center">${item.quantity}</span>
-                            <button onclick="changeQuantity('${id}', 1)" class="w-8 h-8 rounded-full bg-pasta-red shadow-sm text-white flex items-center justify-center font-bold hover:bg-red-800 transition-colors">
+                            <span class="font-bold text-sm w-5 text-center">${item.quantity}</span>
+                            <button type="button" onclick="changeQuantity('${id}', 1)" class="w-8 h-8 rounded-full bg-pasta-red shadow-sm text-white flex items-center justify-center font-bold hover:bg-red-800 transition-colors" aria-label="Sumar uno">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </button>
                         </div>
@@ -717,30 +718,30 @@
         }
 
         function sendOrder() {
-            if (Object.keys(cart).length === 0) return;
+            const pedidos = Object.values(cart).filter((item) => item.quantity > 0);
+            if (!pedidos.length) return;
             
             let message = "¡Hola Juliet Pastas! 👋\nQuiero realizar el siguiente pedido:\n\n";
             
-            for (const id in cart) {
-                const item = cart[id];
+            pedidos.forEach((item) => {
                 const valor = precioNumero(item.price);
                 const subtotal = valor === null ? 'a confirmar' : formatoPesos(valor * item.quantity);
                 message += `👉 *${item.quantity}x* ${item.name} — ${subtotal}\n`;
-            }
+            });
             
             message += "\n";
-            const suma = Object.values(cart).reduce((acc, item) => {
+            const suma = pedidos.reduce((acc, item) => {
                 const valor = precioNumero(item.price);
                 return valor === null ? acc : acc + valor * item.quantity;
             }, 0);
-            const sinPrecio = Object.values(cart).some((item) => precioNumero(item.price) === null);
+            const sinPrecio = pedidos.some((item) => precioNumero(item.price) === null);
             if (suma > 0) message += `*Subtotal: ${formatoPesos(suma)}*\n`;
             message += "Entrega: a acordar después del pedido\n";
             if (suma > 0) message += `*Total: ${formatoPesos(suma)}*${sinPrecio ? ' (hay productos sin precio en la lista)' : ''}\n`;
             message += "\n¿Me confirmarían disponibilidad? ¡Gracias!";
 
             const url = `https://wa.me/5492644053993?text=${encodeURIComponent(message)}`;
-            const detalle = Object.values(cart).map((item) => {
+            const detalle = pedidos.map((item) => {
                 const valor = precioNumero(item.price);
                 const subtotal = valor === null ? 'a confirmar' : formatoPesos(valor * item.quantity);
                 return `${item.quantity} × ${item.corto || item.name} — ${subtotal}`;
