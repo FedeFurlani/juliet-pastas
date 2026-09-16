@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliet Pastas | Sorrentinos Artesanales</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pasta-red': '#c62828',
+                        'pasta-green': '#2e7d32',
+                        'pasta-cream': '#fdfbf7',
+                        'pasta-dark': '#2c1e16',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c62828' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-bg {
+            background-color: #c62828;
+            background-image: linear-gradient(135deg, #c62828 0%, #8e0000 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(198, 40, 40, 0.2);
+        }
+        
+        /* Ocultar barra de scroll para el modal */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .portada-slide {
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+        .portada-slide.activa {
+            opacity: 1;
+        }
+        .heladera-cuerpo {
+            background: linear-gradient(165deg, #fffdf9 0%, #f6e7dc 55%, #ecd3c2 100%);
+            box-shadow: 0 30px 60px -20px rgba(44, 30, 22, 0.35), inset 0 1px 0 rgba(255,255,255,.9);
+        }
+        .heladera-interior {
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.95), transparent 46%),
+                linear-gradient(180deg, #f3fbff 0%, #d7eefb 100%);
+            box-shadow: inset 0 0 60px rgba(70, 140, 190, .22);
+        }
+        .heladera-estante {
+            background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.25));
+            border: 1px solid rgba(255,255,255,.85);
+            box-shadow: 0 12px 0 rgba(30, 70, 100, .07), inset 0 1px 0 rgba(255,255,255,.9);
+        }
+        .heladera-item {
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+        .heladera-item:active {
+            transform: scale(.98);
+        }
+    </style>
+</head>
+<body class="font-sans text-pasta-dark overflow-x-hidden relative">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-40 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-bold text-pasta-red flex items-center gap-2">
+                        <i id="brand-icon" class="fa-solid fa-wheat-awn"></i>
+                        <img id="brand-logo" alt="Juliet Pastas" class="hidden h-10 w-10 rounded-full object-cover border border-pasta-red">
+                        Juliet Pastas
+                    </span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
+                    <a href="#heladera" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Heladera</a>
+                    <a href="#sorrentinos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Sorrentinos</a>
+                    <a href="#farinatas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Farinatas</a>
+                    <a href="#fideos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Fideos</a>
+                    <a href="#nosotros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nosotros</a>
+                </div>
+                <div>
+                    <!-- Botón de carrito en el Navbar -->
+                    <button onclick="toggleCart()" class="relative bg-pasta-red hover:bg-red-800 text-white p-3 rounded-full transition-colors flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count-nav" class="absolute -top-1 -right-1 bg-yellow-400 text-pasta-dark text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border border-white hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="pedido-bar" class="fixed bottom-0 inset-x-0 z-40 hidden">
+        <div class="bg-white border-t border-red-100 shadow-[0_-8px_30px_rgba(44,30,22,0.12)]">
+            <div class="max-w-3xl mx-auto px-4 py-3 sm:px-6">
+                <div class="flex items-center justify-between gap-3 mb-2">
+                    <p class="font-serif text-lg font-bold text-pasta-red flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping"></i> Tu pedido
+                        <span id="pedido-total" class="text-xs font-sans font-semibold bg-yellow-400 text-pasta-dark px-2 py-0.5 rounded-full">0</span>
+                    </p>
+                    <button onclick="clearCart()" id="btn-clear-pedido" class="text-sm text-red-500 hover:text-red-700 font-medium">Vaciar</button>
+                </div>
+                <div class="flex justify-between text-[11px] uppercase tracking-widest text-pasta-red/70 font-semibold px-1">
+                    <span>Producto</span>
+                    <span class="pr-8">Subtotal</span>
+                </div>
+                <div id="pedido-items" class="max-h-40 overflow-y-auto divide-y divide-red-50"></div>
+                <p class="text-xs text-gray-500 mt-3">La entrega se acuerda después de hacer el pedido.</p>
+                <div class="flex items-end justify-between gap-3 py-2">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-gray-400">Total</p>
+                        <p id="pedido-nota" class="text-xs text-gray-400"></p>
+                    </div>
+                    <p id="pedido-monto" class="font-serif text-2xl font-bold text-pasta-dark">$0</p>
+                </div>
+                <button onclick="sendOrder()" id="btn-send-order-bar" data-enviar-pedido class="w-full bg-pasta-green hover:bg-green-800 text-white font-bold py-3 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Hacer Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="producto-modal" class="fixed inset-0 z-[60] hidden items-end sm:items-center justify-center p-0 sm:p-6" onclick="if (event.target === this) cerrarProducto()">
+        <div class="bg-white w-full sm:max-w-2xl max-h-[94vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl shadow-2xl relative">
+            <button type="button" onclick="cerrarProducto()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 text-pasta-dark shadow flex items-center justify-center" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <img id="producto-foto" alt="" class="w-full h-72 sm:h-96 object-cover bg-gray-100">
+            <div class="p-6 sm:p-8">
+                <p id="producto-seccion" class="text-xs uppercase tracking-widest text-pasta-green font-semibold"></p>
+                <h2 id="producto-nombre" class="font-serif text-3xl sm:text-4xl font-bold mt-1"></h2>
+                <p id="producto-masa" class="text-pasta-red font-semibold mt-2"></p>
+                <p id="producto-precio" class="text-2xl font-bold mt-3"></p>
+                <p id="producto-desc" class="text-gray-600 mt-4"></p>
+                <ul id="producto-datos" class="mt-5 space-y-2 text-sm text-gray-600"></ul>
+                <div id="producto-accion" class="mt-6"></div>
+            </div>
+        </div>
+    </div>
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm" onclick="toggleCart()"></div>
+    
+    <div id="cart-modal" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-6 border-b flex justify-between items-center bg-gray-50">
+            <h2 class="font-serif text-2xl font-bold text-pasta-red flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping"></i> Tu Pedido
+            </h2>
+            <div class="flex items-center gap-3">
+                <button onclick="clearCart()" id="btn-clear-cart" class="text-sm text-red-500 hover:text-red-700 hidden font-medium flex items-center gap-1 bg-red-50 px-2 py-1 rounded">
+                    <i class="fa-solid fa-trash-can"></i> Vaciar
+                </button>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-pasta-red text-2xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6">
+            <!-- Cart items will be injected here via JS -->
+            <div class="h-full flex flex-col items-center justify-center text-gray-400 space-y-4">
+                <i class="fa-solid fa-cart-arrow-down text-5xl"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        
+        <div class="p-6 border-t bg-gray-50">
+            <button onclick="sendOrder()" id="btn-send-order" data-enviar-pedido class="w-full bg-pasta-green hover:bg-green-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+                Hacer Pedido por WhatsApp
+            </button>
+            <p class="text-xs text-center text-gray-500 mt-3">Serás redirigido a WhatsApp para confirmar el pedido con nosotros.</p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg text-white pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-4 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGgyMHY0MEgwem0yMCAwaDIwdjQwSDIweiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==')] opacity-10"></div>
+        <div class="absolute -bottom-10 -right-10 text-white/10">
+            <i class="fa-solid fa-leaf text-[20rem]"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <span class="uppercase tracking-widest text-sm font-semibold text-pasta-cream/80 mb-4 block">San Juan, Argentina</span>
+                    <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                        Sorrentinos <br>
+                        <span class="italic font-light">Artesanales</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-pasta-cream/90 mb-10 font-light max-w-lg mx-auto lg:mx-0">
+                        Sabor casero, hecho con amor. Ingredientes frescos y recetas tradicionales directas a tu mesa.
+                    </p>
+                    <a href="#heladera" class="bg-white text-pasta-red hover:bg-gray-100 px-8 py-3.5 rounded-full font-semibold text-lg transition-colors inline-block shadow-xl">
+                        Armar mi pedido
+                    </a>
+                </div>
+                <div id="portada" class="relative h-[280px] sm:h-[420px]">
+                    <img src="IMAGENES/portada/WhatsApp%20Image%202026-09-15%20at%2023.06.03.jpeg" alt="Bandeja de sorrentinos" class="portada-slide activa absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white/20">
+                    <img src="IMAGENES/portada/WhatsApp%20Image%202026-09-15%20at%2023.06.03(1).jpeg" alt="Sorrentinos de masa de remolacha" class="portada-slide absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white/20">
+                    <img src="IMAGENES/portada/WhatsApp%20Image%202026-09-15%20at%2023.06.04.jpeg" alt="Farinatas" class="portada-slide absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white/20">
+                    <div id="portada-dots" class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom wavy divider -->
+        <div class="absolute bottom-0 w-full leading-none z-20">
+            <svg class="block w-full h-12 md:h-16" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,137.9,127,213,121.75,252.79,119.06,291.68,103.54,321.39,56.44Z" fill="#fdfbf7"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="heladera" class="py-16 scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Pedí desde acá</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mt-2">La heladera</h2>
+                <p class="mt-4 text-gray-600 max-w-xl mx-auto">Tocá la foto para ver el detalle. Con el + sumás la bandeja al pedido.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-6 right-6 -bottom-2 h-3 rounded-b-xl bg-pasta-dark/80"></div>
+                <div class="heladera-cuerpo relative rounded-[2.2rem] border-[6px] border-pasta-red p-3 sm:p-4">
+                    <div class="absolute right-3 sm:right-5 top-24 bottom-24 w-3 rounded-full bg-pasta-red shadow-md"></div>
+                    <div class="rounded-[1.4rem] bg-white/50 border border-white px-4 py-3 flex items-center justify-between mb-3">
+                        <span class="font-serif text-2xl font-bold text-pasta-red">Juliet</span>
+                        <span class="bg-sky-950 text-sky-100 text-xs font-semibold tracking-widest px-3 py-1.5 rounded-lg"><i class="fa-solid fa-snowflake mr-1"></i>-18°C</span>
+                    </div>
+                    <div class="heladera-interior rounded-[1.4rem] p-3 sm:p-5">
+                        <div class="mx-auto mb-4 h-2 w-28 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,.95)]"></div>
+                        <p class="text-[11px] uppercase tracking-[0.2em] text-sky-900/60 font-semibold mb-2">Estante de sorrentinos</p>
+                        <div class="heladera-estante rounded-2xl p-3 grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+                            <article data-heladera="jamon" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('jamon')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.32.jpeg" alt="Jamón y Muzzarella" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Jamón y Muzzarella</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$12.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('jamon', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('jamon', 'Sorrentinos Jamón y Muzzarella', '$12.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="calabaza" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('calabaza')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33(1).jpeg" alt="Calabaza, muzzarella y cebolla" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Calabaza y muzzarella</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$12.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('calabaza', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('calabaza', 'Sorrentinos Calabaza, muzzarella y cebolla', '$12.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="pollo" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('pollo')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33.jpeg" alt="Pollo y Espinaca" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Pollo y Espinaca</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$12.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('pollo', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('pollo', 'Sorrentinos Pollo y Espinaca', '$12.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="bondiola" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('bondiola')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33(2).jpeg" alt="Bondiola a la cerveza" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Bondiola a la cerveza</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$15.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('bondiola', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('bondiola', 'Sorrentinos Bondiola a la cerveza', '$15.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="osobuco" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('osobuco')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.34.jpeg" alt="Osobuco al Malbec" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Osobuco al Malbec</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$15.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('osobuco', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('osobuco', 'Sorrentinos Osobuco al Malbec', '$15.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="langostinos" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('langostinos')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.34(1).jpeg" alt="Langostinos, ricota y cebolla" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Langostinos y ricota</p>
+                                    <p class="text-xs text-pasta-red font-semibold">$16.000</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('langostinos', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('langostinos', 'Sorrentinos Langostinos, ricota y cebolla', '$16.000')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <p class="text-[11px] uppercase tracking-[0.2em] text-sky-900/60 font-semibold mb-2">Estante de farinatas y fideos</p>
+                        <div class="heladera-estante rounded-2xl p-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <article data-heladera="farinatas" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('farinatas')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.50.jpeg" alt="Farinatas" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Farinatas</p>
+                                    <p class="text-xs text-gray-400 font-semibold">A confirmar</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('farinatas', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('farinatas', 'Farinatas')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                            <article data-heladera="fideos" class="heladera-item bg-white rounded-2xl overflow-hidden shadow-md">
+                                <button type="button" onclick="verProducto('fideos')" class="relative block w-full">
+                                    <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.06.00.jpeg" alt="Fideos al huevo" class="w-full h-28 sm:h-36 object-cover">
+                                    <span data-badge class="hidden absolute top-2 right-2 bg-pasta-red text-white text-xs font-bold w-6 h-6 rounded-full items-center justify-center">0</span>
+                                </button>
+                                <div class="p-2.5">
+                                    <p class="text-sm font-semibold leading-tight">Fideos al huevo</p>
+                                    <p class="text-xs text-gray-400 font-semibold">A confirmar</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <button type="button" onclick="changeQuantity('fideos', -1)" class="w-8 h-8 rounded-full border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                                        <span data-cant class="font-bold text-sm">0</span>
+                                        <button type="button" onclick="addToCart('fideos', 'Fideos al huevo')" class="w-8 h-8 rounded-full bg-pasta-red text-white" aria-label="Sumar"><i class="fa-solid fa-plus text-xs"></i></button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mb-4">Nuestras Especialidades</h2>
+                <div class="h-1 w-24 bg-pasta-green mx-auto rounded"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Elaborados con masa casera e ingredientes de primera calidad. Elegí la sección y armá tu pedido.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-14">
+                <a href="#sorrentinos" class="bg-pasta-red text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md hover:bg-red-800 transition-colors">Sorrentinos</a>
+                <a href="#farinatas" class="bg-white text-pasta-red border-2 border-pasta-red px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-50 transition-colors">Farinatas</a>
+                <a href="#fideos" class="bg-white text-pasta-red border-2 border-pasta-red px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-50 transition-colors">Fideos</a>
+            </div>
+
+            <div id="sorrentinos" class="scroll-mt-28 mb-20">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Sección</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Sorrentinos</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Bandejas de 12 unidades, listas para congelar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="jamon" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.32.jpeg" alt="Sorrentinos Jamón y Muzzarella" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur text-pasta-red font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-sm shadow-md">Clásico</div>
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Jamón y Muzzarella</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Masa al huevo</p>
+                                <p class="font-semibold mb-3">$12.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">El sabor clásico que nunca falla. Relleno abundante de jamón cocido seleccionado y muzzarella de primera.</p>
+                            </div>
+                            <button data-agregar="jamon" onclick="addToCart('jamon', 'Sorrentinos Jamón y Muzzarella', '$12.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                    <article data-ver="calabaza" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33(1).jpeg" alt="Sorrentinos Calabaza, muzzarella y cebolla" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Calabaza, muzzarella y cebolla</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Masa de remolacha</p>
+                                <p class="font-semibold mb-3">$12.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Calabaza, muzzarella y cebolla caramelizada, en una masa de remolacha.</p>
+                            </div>
+                            <button data-agregar="calabaza" onclick="addToCart('calabaza', 'Sorrentinos Calabaza, muzzarella y cebolla', '$12.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                    <article data-ver="pollo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33.jpeg" alt="Sorrentinos Pollo y Espinaca" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-pasta-green/90 backdrop-blur text-white font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-sm shadow-md">Recomendado</div>
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Pollo y Espinaca</h3>
+                                <p class="text-sm text-pasta-green font-semibold mb-1">Masa de espinaca</p>
+                                <p class="font-semibold mb-3">$12.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Relleno suave de pollo desmenuzado y espinaca con un delicioso salteado de verduras frescas.</p>
+                            </div>
+                            <button data-agregar="pollo" onclick="addToCart('pollo', 'Sorrentinos Pollo y Espinaca', '$12.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                    <article data-ver="bondiola" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.33(2).jpeg" alt="Sorrentinos Bondiola a la cerveza" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Bondiola a la cerveza</h3>
+                                <p class="text-sm text-amber-600 font-semibold mb-1">Masa de morrón</p>
+                                <p class="font-semibold mb-3">$15.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Bondiola de cerdo a la cerveza, envuelta en masa de morrón.</p>
+                            </div>
+                            <button data-agregar="bondiola" onclick="addToCart('bondiola', 'Sorrentinos Bondiola a la cerveza', '$15.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                    <article data-ver="osobuco" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.34.jpeg" alt="Sorrentinos Osobuco" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-amber-600/90 backdrop-blur text-white font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-sm shadow-md">Gourmet</div>
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Osobuco al Malbec</h3>
+                                <p class="text-sm text-amber-600 font-semibold mb-1">Masa de pimentón ahumado</p>
+                                <p class="font-semibold mb-3">$15.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Osobuco cocinado a fuego lento, envuelto en masa de pimentón ahumado.</p>
+                            </div>
+                            <button data-agregar="osobuco" onclick="addToCart('osobuco', 'Sorrentinos Osobuco al Malbec', '$15.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                    <article data-ver="langostinos" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.34(1).jpeg" alt="Sorrentinos Langostinos y Ricota" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-blue-600/90 backdrop-blur text-white font-bold px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-sm shadow-md">Premium</div>
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Langostinos, ricota y cebolla</h3>
+                                <p class="text-sm text-amber-500 font-semibold mb-1">Masa de cúrcuma</p>
+                                <p class="font-semibold mb-3">$16.000</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Langostinos, ricota y cebolla al verdeo, en una masa dorada con cúrcuma.</p>
+                            </div>
+                            <button data-agregar="langostinos" onclick="addToCart('langostinos', 'Sorrentinos Langostinos, ricota y cebolla', '$16.000')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="farinatas" class="scroll-mt-28 mb-20">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Sección</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Farinatas</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Arrolladas, bandeja de 12 unidades.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="farinatas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.05.50.jpeg" alt="Farinatas" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Farinatas</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-3">Masa al huevo</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Arrolladas de jamón y masa, perfectas para compartir en familia.</p>
+                            </div>
+                            <button data-agregar="farinatas" onclick="addToCart('farinatas', 'Farinatas')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="fideos" class="scroll-mt-28">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Sección</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Fideos</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Nidos de masa al huevo, listos para congelar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="fideos" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-gray-200">
+                            <img src="IMAGENES/WhatsApp%20Image%202026-09-15%20at%2023.06.00.jpeg" alt="Fideos al huevo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Fideos al huevo</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-3">Masa al huevo</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Nidos de fideos artesanales, hechos con masa al huevo y listos para freezar.</p>
+                            </div>
+                            <button data-agregar="fideos" onclick="addToCart('fideos', 'Fideos al huevo')" class="agregar-btn w-full mt-2 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="hidden py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mb-4">De la cocina a la mesa</h2>
+                <div class="h-1 w-24 bg-pasta-green mx-auto rounded"></div>
+            </div>
+            <div id="galeria-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Info Banner -->
+    <section class="bg-pasta-dark text-white py-12 border-y-4 border-pasta-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
+                <div class="py-4 md:py-0 px-4">
+                    <i class="fa-solid fa-snowflake text-4xl text-blue-300 mb-4"></i>
+                    <h4 class="font-serif text-xl font-bold mb-2">Listos para Freezar</h4>
+                    <p class="text-gray-300 text-sm">Nuestras pastas se entregan listas para mantener a -18°C. ¡Tenelas siempre a mano!</p>
+                </div>
+                <div class="py-4 md:py-0 px-4">
+                    <i class="fa-solid fa-box-open text-4xl text-amber-500 mb-4"></i>
+                    <h4 class="font-serif text-xl font-bold mb-2">Presentación</h4>
+                    <p class="text-gray-300 text-sm">Cada bandeja contiene 12 unidades abundantes, ideales para 2 porciones bien servidas.</p>
+                </div>
+                <div class="py-4 md:py-0 px-4">
+                    <i class="fa-solid fa-heart text-4xl text-pasta-red mb-4"></i>
+                    <h4 class="font-serif text-xl font-bold mb-2">100% Artesanal</h4>
+                    <p class="text-gray-300 text-sm">Sin conservantes artificiales. Masa e ingredientes frescos, hechos con amor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="nosotros" class="bg-white pt-16 pb-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="text-center md:text-left max-w-xl">
+                    <h2 class="font-serif text-3xl font-bold text-pasta-red mb-4">Juliet Pastas</h2>
+                    <p class="text-gray-600 mb-4">Somos un emprendimiento familiar dedicado a llevar a tu mesa los mejores sabores caseros. Nuestras pastas son elaboradas artesanalmente con recetas que combinan tradición y toques gourmet. <br><span class="font-medium text-pasta-green mt-2 inline-block"><i class="fa-solid fa-motorcycle mr-1"></i> Realizamos entregas a domicilio en distintos departamentos.</span></p>
+                    <div class="flex flex-col md:flex-row gap-4 mt-6">
+                        <div class="flex items-center justify-center md:justify-start gap-3 text-gray-700">
+                            <i class="fa-solid fa-location-dot text-pasta-red text-xl"></i>
+                            <span>San Juan, Argentina</span>
+                        </div>
+                        <div class="hidden md:block text-gray-300">|</div>
+                        <div class="flex items-center justify-center md:justify-start gap-3 text-gray-700">
+                            <i class="fa-solid fa-phone text-pasta-green text-xl"></i>
+                            <span>2644053993</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">© 2026 Juliet Pastas. Todos los derechos reservados. <a href="gestion/" class="ml-2 text-gray-400 hover:text-pasta-red">Gestión</a></p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-400 hover:text-pasta-red transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Carrito de compras State
+        const cart = {};
+        
+        // Modal State
+        let isCartOpen = false;
+
+        function toggleCart() {
+            isCartOpen = !isCartOpen;
+            const modal = document.getElementById('cart-modal');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (isCartOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    modal.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                overlay.classList.add('opacity-0');
+                modal.classList.add('translate-x-full');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function updateCartCount() {
+            const total = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+            
+            const countNav = document.getElementById('cart-count-nav');
+            const btnClear = document.getElementById('btn-clear-cart');
+            const totalPedido = document.getElementById('pedido-total');
+            
+            if (total > 0) {
+                countNav.innerText = total;
+                countNav.classList.remove('hidden');
+                if (totalPedido) totalPedido.innerText = total;
+                if (btnClear) btnClear.classList.remove('hidden');
+            } else {
+                countNav.classList.add('hidden');
+                if (btnClear) btnClear.classList.add('hidden');
+            }
+
+            document.querySelectorAll('[data-enviar-pedido]').forEach((btn) => {
+                if (total > 0) btn.removeAttribute('disabled');
+                else btn.setAttribute('disabled', 'true');
+            });
+        }
+
+        function clearCart() {
+            if (confirm('¿Estás seguro de que querés vaciar todo tu pedido?')) {
+                for (let key in cart) {
+                    delete cart[key];
+                }
+                updateCartCount();
+                renderCart();
+            }
+        }
+
+        function addToCart(id, name, price) {
+            const card = document.querySelector(`[data-ver="${id}"]`);
+            const foto = card ? card.querySelector('img') : null;
+            if (!cart[id]) {
+                cart[id] = {
+                    name: name,
+                    corto: card ? card.querySelector('h3').textContent : name,
+                    quantity: 1,
+                    price: price || '',
+                    img: foto ? foto.getAttribute('src') : ''
+                };
+            } else {
+                cart[id].quantity += 1;
+            }
+            updateCartCount();
+            renderCart();
+        }
+
+        function quitarProducto(id) {
+            delete cart[id];
+            updateCartCount();
+            renderCart();
+        }
+
+        function changeQuantity(id, delta) {
+            if (cart[id]) {
+                cart[id].quantity += delta;
+                if (cart[id].quantity <= 0) {
+                    delete cart[id];
+                }
+                updateCartCount();
+                renderCart();
+            }
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+            
+            if (Object.keys(cart).length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-gray-400 space-y-4 py-20">
+                        <i class="fa-solid fa-cart-arrow-down text-5xl"></i>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                `;
+                renderPedidoBar();
+                return;
+            }
+
+            for (const id in cart) {
+                const item = cart[id];
+                container.innerHTML += `
+                    <div class="flex justify-between items-center mb-4 p-4 bg-white rounded-lg border border-gray-100 shadow-sm">
+                        <div class="flex-1 pr-4">
+                            <p class="font-bold text-sm text-pasta-dark">${escHtml(item.name)}</p>
+                            <p class="text-xs text-gray-500">${item.price ? escHtml(item.price) + ' c/u' : 'Bandeja de 12 unid.'}</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-gray-50 rounded-full border border-gray-200 p-1">
+                            <button onclick="changeQuantity('${id}', -1)" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-pasta-red hover:bg-red-50 hover:text-red-700 transition-colors">
+                                <i class="fa-solid fa-minus text-xs"></i>
+                            </button>
+                            <span class="font-bold text-sm w-4 text-center">${item.quantity}</span>
+                            <button onclick="changeQuantity('${id}', 1)" class="w-8 h-8 rounded-full bg-pasta-red shadow-sm text-white flex items-center justify-center font-bold hover:bg-red-800 transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+            renderPedidoBar();
+        }
+
+        function renderPedidoBar() {
+            const bar = document.getElementById('pedido-bar');
+            const lista = document.getElementById('pedido-items');
+            const items = Object.entries(cart);
+            if (!bar || !lista) return;
+
+            if (items.length === 0) {
+                bar.classList.add('hidden');
+                document.body.style.paddingBottom = '';
+                lista.innerHTML = '';
+                pintarTotal();
+                actualizarBotones();
+                return;
+            }
+
+            bar.classList.remove('hidden');
+            lista.innerHTML = items.map(([id, item]) => {
+                const unitario = precioNumero(item.price);
+                const subtotal = unitario === null ? 'A confirmar' : formatoPesos(unitario * item.quantity);
+                const foto = item.img ? `<img src="${escHtml(item.img)}" alt="" class="w-12 h-12 rounded-lg object-cover bg-gray-100 shrink-0">` : '';
+                return `
+                <div class="flex items-center gap-3 py-2">
+                    ${foto}
+                    <div class="min-w-0 flex-1">
+                        <p class="text-sm font-semibold truncate">${escHtml(item.corto || item.name)}</p>
+                        <div class="flex items-center gap-1 mt-1">
+                            <button onclick="changeQuantity('${id}', -1)" class="w-7 h-7 rounded-md border border-gray-200 text-pasta-red" aria-label="Quitar uno"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                            <span class="w-6 text-center text-sm font-bold">${item.quantity}</span>
+                            <button onclick="changeQuantity('${id}', 1)" class="w-7 h-7 rounded-md border border-gray-200 text-pasta-red" aria-label="Sumar uno"><i class="fa-solid fa-plus text-[10px]"></i></button>
+                        </div>
+                    </div>
+                    <p class="text-sm font-bold shrink-0">${subtotal}</p>
+                    <button onclick="quitarProducto('${id}')" class="text-gray-400 hover:text-red-600 px-1" aria-label="Eliminar"><i class="fa-solid fa-trash-can text-sm"></i></button>
+                </div>`;
+            }).join('');
+            pintarTotal();
+            actualizarBotones();
+            requestAnimationFrame(() => {
+                document.body.style.paddingBottom = bar.offsetHeight + 'px';
+            });
+        }
+
+        function precioNumero(precio) {
+            if (!precio) return null;
+            const numero = Number(String(precio).replace(/\D/g, ''));
+            return Number.isFinite(numero) && numero > 0 ? numero : null;
+        }
+
+        function formatoPesos(numero) {
+            return '$' + String(numero).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function pintarTotal() {
+            const monto = document.getElementById('pedido-monto');
+            const nota = document.getElementById('pedido-nota');
+            if (!monto) return;
+            let suma = 0;
+            let sinPrecio = 0;
+            Object.values(cart).forEach((item) => {
+                const valor = precioNumero(item.price);
+                if (valor === null) sinPrecio += item.quantity;
+                else suma += valor * item.quantity;
+            });
+            if (suma > 0) monto.textContent = formatoPesos(suma);
+            else monto.textContent = 'A confirmar';
+            if (nota) {
+                nota.textContent = sinPrecio
+                    ? (suma > 0 ? 'Hay productos sin precio en la lista' : 'Estos productos no tienen precio cargado')
+                    : '';
+            }
+        }
+
+        function actualizarBotones() {
+            document.querySelectorAll('[data-agregar]').forEach((btn) => {
+                const item = cart[btn.dataset.agregar];
+                if (item) {
+                    btn.innerHTML = `<i class="fa-solid fa-check"></i> <span class="sm:hidden">Otro</span><span class="hidden sm:inline">Agregar otro</span> <span class="opacity-80">(${item.quantity})</span>`;
+                    btn.classList.add('bg-pasta-red', 'text-white');
+                    btn.classList.remove('bg-white', 'text-pasta-red');
+                } else {
+                    btn.innerHTML = `<i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span>`;
+                    btn.classList.add('bg-white', 'text-pasta-red');
+                    btn.classList.remove('bg-pasta-red', 'text-white');
+                }
+            });
+            pintarHeladera();
+        }
+
+        function pintarHeladera() {
+            document.querySelectorAll('[data-heladera]').forEach((caja) => {
+                const cantidad = cart[caja.dataset.heladera] ? cart[caja.dataset.heladera].quantity : 0;
+                const numero = caja.querySelector('[data-cant]');
+                const badge = caja.querySelector('[data-badge]');
+                if (numero) numero.textContent = cantidad;
+                if (badge) {
+                    badge.textContent = cantidad;
+                    badge.classList.toggle('hidden', cantidad === 0);
+                    badge.classList.toggle('flex', cantidad > 0);
+                }
+                caja.classList.toggle('ring-2', cantidad > 0);
+                caja.classList.toggle('ring-pasta-red', cantidad > 0);
+            });
+        }
+
+        function sendOrder() {
+            if (Object.keys(cart).length === 0) return;
+            
+            let message = "¡Hola Juliet Pastas! 👋\nQuiero realizar el siguiente pedido:\n\n";
+            
+            for (const id in cart) {
+                const item = cart[id];
+                const valor = precioNumero(item.price);
+                const subtotal = valor === null ? 'a confirmar' : formatoPesos(valor * item.quantity);
+                message += `👉 *${item.quantity}x* ${item.name} — ${subtotal}\n`;
+            }
+            
+            message += "\n";
+            const suma = Object.values(cart).reduce((acc, item) => {
+                const valor = precioNumero(item.price);
+                return valor === null ? acc : acc + valor * item.quantity;
+            }, 0);
+            const sinPrecio = Object.values(cart).some((item) => precioNumero(item.price) === null);
+            if (suma > 0) message += `*Subtotal: ${formatoPesos(suma)}*\n`;
+            message += "Entrega: a acordar después del pedido\n";
+            if (suma > 0) message += `*Total: ${formatoPesos(suma)}*${sinPrecio ? ' (hay productos sin precio en la lista)' : ''}\n`;
+            message += "\n¿Me confirmarían disponibilidad? ¡Gracias!";
+            
+            const url = `https://wa.me/5492644053993?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        const PRODUCTOS = {
+            jamon: { seccion: 'Sorrentinos', masa: 'Masa al huevo', precio: '$12.000', etiqueta: 'Clásico', cart: 'Sorrentinos Jamón y Muzzarella', extra: ['Bandeja de 12 unidades', 'Listo para congelar a -18°C', 'Sin conservantes'] },
+            calabaza: { seccion: 'Sorrentinos', masa: 'Masa de remolacha', precio: '$12.000', etiqueta: '', cart: 'Sorrentinos Calabaza, muzzarella y cebolla', extra: ['Bandeja de 12 unidades', 'Cebolla caramelizada', 'Listo para congelar a -18°C'] },
+            pollo: { seccion: 'Sorrentinos', masa: 'Masa de espinaca', precio: '$12.000', etiqueta: 'Recomendado', cart: 'Sorrentinos Pollo y Espinaca', extra: ['Bandeja de 12 unidades', 'Con salteado de verduras', 'Listo para congelar a -18°C'] },
+            bondiola: { seccion: 'Sorrentinos', masa: 'Masa de morrón', precio: '$15.000', etiqueta: '', cart: 'Sorrentinos Bondiola a la cerveza', extra: ['Bandeja de 12 unidades', 'Bondiola de cerdo', 'Listo para congelar a -18°C'] },
+            osobuco: { seccion: 'Sorrentinos', masa: 'Masa de pimentón ahumado', precio: '$15.000', etiqueta: 'Gourmet', cart: 'Sorrentinos Osobuco al Malbec', extra: ['Bandeja de 12 unidades', 'Cocinado a fuego lento', 'Listo para congelar a -18°C'] },
+            langostinos: { seccion: 'Sorrentinos', masa: 'Masa de cúrcuma', precio: '$16.000', etiqueta: 'Premium', cart: 'Sorrentinos Langostinos, ricota y cebolla', extra: ['Bandeja de 12 unidades', 'Con cebolla al verdeo', 'Listo para congelar a -18°C'] },
+            farinatas: { seccion: 'Farinatas', masa: 'Masa al huevo', precio: '', etiqueta: '', cart: 'Farinatas', extra: ['Bandeja de 12 unidades', 'Arrolladas', 'Listas para congelar a -18°C'] },
+            fideos: { seccion: 'Fideos', masa: 'Masa al huevo', precio: '', etiqueta: '', cart: 'Fideos al huevo', extra: ['Nidos artesanales', 'Listos para congelar a -18°C'] }
+        };
+
+        function verProducto(id) {
+            const card = document.querySelector(`[data-ver="${id}"]`);
+            const info = PRODUCTOS[id];
+            if (!card || !info) return;
+            const img = card.querySelector('img');
+            const nombre = card.querySelector('h3').textContent;
+            const desc = card.querySelector('p.text-gray-600').textContent;
+            document.getElementById('producto-foto').src = img.src;
+            document.getElementById('producto-foto').alt = img.alt;
+            document.getElementById('producto-seccion').textContent = info.etiqueta ? `${info.seccion} · ${info.etiqueta}` : info.seccion;
+            document.getElementById('producto-nombre').textContent = nombre;
+            document.getElementById('producto-masa').textContent = info.masa;
+            const precio = document.getElementById('producto-precio');
+            precio.textContent = info.precio || 'Precio a confirmar';
+            precio.classList.toggle('text-gray-400', !info.precio);
+            document.getElementById('producto-desc').textContent = desc;
+            document.getElementById('producto-datos').innerHTML = info.extra.map((linea) => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-pasta-green text-xs"></i>${escHtml(linea)}</li>`).join('');
+            const precioArg = info.precio ? `, '${info.precio}'` : '';
+            document.getElementById('producto-accion').innerHTML = `<button data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-full bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2"><i class="fa-solid fa-plus"></i> Agregar al Pedido</button>`;
+            const modal = document.getElementById('producto-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            actualizarBotones();
+        }
+
+        function cerrarProducto() {
+            const modal = document.getElementById('producto-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('[data-agregar], a, button')) return;
+            const card = event.target.closest('[data-ver]');
+            if (card) verProducto(card.dataset.ver);
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') cerrarProducto();
+        });
+
+        function escHtml(valor) {
+            return String(valor ?? '').replace(/[&<>"']/g, (c) => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+        }
+
+        function srcCatalogo(archivo, version) {
+            return 'IMAGENES/' + encodeURIComponent(archivo) + (version ? '?v=' + encodeURIComponent(version) : '');
+        }
+
+        async function aplicarCatalogo() {
+            try {
+                const respuesta = await fetch('catalogo.json', { cache: 'no-store' });
+                if (!respuesta.ok) return;
+                const catalogo = await respuesta.json();
+                const version = catalogo.actualizado || '';
+
+                document.querySelectorAll('[data-slot]').forEach((img) => {
+                    const slot = catalogo.slots && catalogo.slots[img.dataset.slot];
+                    if (!slot || !slot.archivo) return;
+                    img.src = srcCatalogo(slot.archivo, version);
+                    if (slot.alt) img.alt = slot.alt;
+                });
+
+                const logo = document.getElementById('brand-logo');
+                const icono = document.getElementById('brand-icon');
+                if (logo && catalogo.logo && catalogo.logo.archivo) {
+                    logo.src = srcCatalogo(catalogo.logo.archivo, version);
+                    logo.alt = catalogo.logo.alt || 'Juliet Pastas';
+                    logo.classList.remove('hidden');
+                    if (icono) icono.classList.add('hidden');
+                }
+
+                const seccion = document.getElementById('galeria');
+                const grilla = document.getElementById('galeria-grid');
+                const fotos = Array.isArray(catalogo.galeria) ? catalogo.galeria.filter((item) => item && item.archivo) : [];
+                if (seccion && grilla && fotos.length) {
+                    seccion.classList.remove('hidden');
+                    grilla.innerHTML = fotos.map((item) => `
+                        <figure class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+                            <img src="${escHtml(srcCatalogo(item.archivo, version))}" alt="${escHtml(item.titulo || '')}" class="w-full h-72 object-cover">
+                            ${item.titulo ? `<figcaption class="p-4 font-serif text-lg">${escHtml(item.titulo)}</figcaption>` : ''}
+                        </figure>
+                    `).join('');
+                }
+            } catch (error) {
+                /* Si se abre el archivo suelto, quedan las fotos ya puestas en la página. */
+            }
+        }
+
+        aplicarCatalogo();
+
+        (function iniciarPortada() {
+            const slides = [...document.querySelectorAll('#portada .portada-slide')];
+            const dots = document.getElementById('portada-dots');
+            if (!slides.length || !dots) return;
+            let actual = 0;
+            let timer;
+
+            function mostrar(indice) {
+                actual = (indice + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle('activa', i === actual));
+                [...dots.children].forEach((dot, i) => {
+                    dot.classList.toggle('bg-white', i === actual);
+                    dot.classList.toggle('bg-white/40', i !== actual);
+                });
+            }
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-white/40';
+                dot.setAttribute('aria-label', 'Foto ' + (i + 1));
+                dot.addEventListener('click', () => {
+                    mostrar(i);
+                    reiniciar();
+                });
+                dots.appendChild(dot);
+            });
+
+            function siguiente() { mostrar(actual + 1); }
+            function reiniciar() {
+                clearInterval(timer);
+                timer = setInterval(siguiente, 4000);
+            }
+            mostrar(0);
+            reiniciar();
+        })();
+    </script>
+</body>
+</html>

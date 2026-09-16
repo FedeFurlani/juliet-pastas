@@ -1,0 +1,57 @@
+{
+  "actualizado": "2026-09-16T12:40:00+00:00",
+  "logo": null,
+  "slots": {
+    "hero-principal": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.05.32.jpeg",
+      "alt": "Sorrentinos"
+    },
+    "hero-secundaria": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.06.04.jpeg",
+      "alt": "Elaboración Farinatas"
+    },
+    "producto-jamon": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.05.32.jpeg",
+      "alt": "Sorrentinos Jamón y Muzzarella"
+    },
+    "producto-pollo": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.05.33.jpeg",
+      "alt": "Sorrentinos Pollo y Espinaca"
+    },
+    "producto-osobuco": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.05.34.jpeg",
+      "alt": "Sorrentinos Osobuco"
+    },
+    "producto-langostinos": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.05.41.jpeg",
+      "alt": "Sorrentinos Langostinos"
+    },
+    "producto-farinatas": {
+      "archivo": "WhatsApp Image 2026-09-15 at 23.06.04.jpeg",
+      "alt": "Farinatas"
+    }
+  },
+  "galeria": [],
+  "meta": {
+    "WhatsApp Image 2026-09-15 at 23.05.32.jpeg": {
+      "titulo": "Sorrentinos",
+      "notas": "Foto de portada y de Jamón y Muzzarella"
+    },
+    "WhatsApp Image 2026-09-15 at 23.05.33.jpeg": {
+      "titulo": "Pollo y Espinaca",
+      "notas": ""
+    },
+    "WhatsApp Image 2026-09-15 at 23.05.34.jpeg": {
+      "titulo": "Osobuco Braseado",
+      "notas": ""
+    },
+    "WhatsApp Image 2026-09-15 at 23.05.41.jpeg": {
+      "titulo": "Langostinos y Ricota",
+      "notas": ""
+    },
+    "WhatsApp Image 2026-09-15 at 23.06.04.jpeg": {
+      "titulo": "Farinatas",
+      "notas": "También se usa como foto secundaria del inicio"
+    }
+  }
+}
