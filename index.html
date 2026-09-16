@@ -745,7 +745,9 @@
         }
 
         function quitarDeTarjeta(id) {
-            quitarProducto(id);
+            if (!cart[id]) return;
+            if (cart[id].quantity <= 1) quitarProducto(id);
+            else changeQuantity(id, -1);
         }
 
         function actualizarBotones() {
