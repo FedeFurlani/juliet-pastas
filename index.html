@@ -685,23 +685,25 @@
                 const foto = item.img
                     ? `<img src="${escHtml(item.img)}" alt="" class="w-14 h-14 rounded-xl object-cover bg-gray-100 shrink-0">`
                     : '';
+                const controles = item.quantity > 0
+                    ? `<div class="flex items-center gap-1 bg-gray-50 rounded-full border border-gray-200 p-1 shrink-0">
+                            <button type="button" onclick="changeQuantity('${id}', -1)" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-pasta-red hover:bg-red-50" aria-label="Quitar uno"><i class="fa-solid fa-minus text-xs"></i></button>
+                            <span class="font-bold text-sm w-5 text-center">${item.quantity}</span>
+                            <button type="button" onclick="changeQuantity('${id}', 1)" class="w-8 h-8 rounded-full bg-pasta-red shadow-sm text-white flex items-center justify-center font-bold" aria-label="Sumar uno"><i class="fa-solid fa-plus text-xs"></i></button>
+                        </div>`
+                    : `<div class="flex flex-col gap-1.5 shrink-0">
+                            <button type="button" onclick="changeQuantity('${id}', 1)" class="px-3 py-1.5 rounded-full bg-pasta-red text-white text-xs font-semibold shadow-sm">Agregar</button>
+                            <button type="button" onclick="quitarProducto('${id}')" class="px-3 py-1.5 rounded-full border border-pasta-red/30 text-pasta-red text-xs font-semibold">Eliminar</button>
+                        </div>`;
                 container.innerHTML += `
                     <div class="flex items-center gap-3 mb-4 p-3 bg-white rounded-2xl border border-gray-100 shadow-sm">
                         ${foto}
                         <div class="min-w-0 flex-1">
                             <p class="font-bold text-sm text-pasta-dark leading-tight">${escHtml(item.corto || item.name)}</p>
                             <p class="text-xs text-gray-500 mt-0.5">${item.price ? escHtml(item.price) + ' c/u' : 'Bandeja de 12 unid.'}</p>
-                            <button type="button" onclick="quitarProducto('${id}')" class="mt-1 text-xs text-gray-400 hover:text-red-600">Eliminar</button>
+                            ${item.quantity > 0 ? `<button type="button" onclick="quitarProducto('${id}')" class="mt-1 text-xs text-gray-400 hover:text-red-600">Eliminar</button>` : ''}
                         </div>
-                        <div class="flex items-center gap-1 bg-gray-50 rounded-full border border-gray-200 p-1 shrink-0">
-                            <button type="button" onclick="changeQuantity('${id}', -1)" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center font-bold text-pasta-red hover:bg-red-50 hover:text-red-700 transition-colors" aria-label="Quitar uno">
-                                <i class="fa-solid fa-minus text-xs"></i>
-                            </button>
-                            <span class="font-bold text-sm w-5 text-center">${item.quantity}</span>
-                            <button type="button" onclick="changeQuantity('${id}', 1)" class="w-8 h-8 rounded-full bg-pasta-red shadow-sm text-white flex items-center justify-center font-bold hover:bg-red-800 transition-colors" aria-label="Sumar uno">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
+                        ${controles}
                     </div>
                 `;
             }
