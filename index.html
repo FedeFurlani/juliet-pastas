@@ -94,6 +94,8 @@
                     <a href="#sorrentinos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Sorrentinos</a>
                     <a href="#farinatas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Farinatas</a>
                     <a href="#fideos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Fideos</a>
+                    <a href="#coccion" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Cocción</a>
+                    <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a>
                     <a href="#nosotros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nosotros</a>
                 </div>
                 <div>
@@ -430,6 +432,45 @@
         </div>
     </section>
 
+    <section id="coccion" class="py-16 scroll-mt-36 md:scroll-mt-28">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Del freezer a la mesa</p>
+                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Cómo se cocinan</h2>
+            </div>
+            <ol class="space-y-3">
+                <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
+                    <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">1</span>
+                    <p>Poné abundante agua a hervir y agregale sal. No las descongeles antes.</p>
+                </li>
+                <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
+                    <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">2</span>
+                    <p>Tirálas directo del freezer. Sorrentinos y farinatas: cuando flotan, un minuto más y probá una. Tiene que estar tierna en el centro.</p>
+                </li>
+                <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
+                    <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">3</span>
+                    <p>Los fideos al huevo están antes: sacalos apenas flotan y quedan al dente. La salsa se prepara aparte.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="resenas" class="py-16 scroll-mt-36 md:scroll-mt-28 bg-white border-y border-red-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Lo que dicen</p>
+                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Reseñas</h2>
+            </div>
+            <div id="resenas-lista" class="grid grid-cols-1 sm:grid-cols-3 gap-4"></div>
+            <p id="resenas-vacio" class="text-center text-gray-500">Cuando nos escriban, las reseñas aparecen acá.</p>
+            <div class="text-center mt-8">
+                <a href="https://wa.me/5492644053993?text=Hola%20Juliet%20Pastas!%20Quiero%20dejar%20una%20rese%C3%B1a." class="inline-flex items-center gap-2 bg-pasta-green text-white font-semibold px-5 py-3 rounded-full">
+                    <i class="fa-brands fa-whatsapp"></i> Dejar mi reseña
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="nosotros" class="bg-white pt-16 pb-8 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -443,10 +484,10 @@
                             <span>San Juan, Argentina</span>
                         </div>
                         <div class="hidden md:block text-gray-300">|</div>
-                        <div class="flex items-center justify-center md:justify-start gap-3 text-gray-700">
-                            <i class="fa-solid fa-phone text-pasta-green text-xl"></i>
+                        <a href="https://wa.me/5492644053993" class="flex items-center justify-center md:justify-start gap-3 text-pasta-green font-semibold">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
                             <span>2644053993</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -694,7 +735,8 @@
                 else suma += valor * item.quantity;
             });
             if (suma > 0) monto.textContent = formatoPesos(suma);
-            else monto.textContent = 'A confirmar';
+            else if (sinPrecio > 0) monto.textContent = 'A confirmar';
+            else monto.textContent = '$0';
             if (nota) {
                 nota.textContent = sinPrecio
                     ? (suma > 0 ? 'Hay productos sin precio en la lista' : 'Estos productos no tienen precio cargado')
@@ -769,6 +811,26 @@
             fideos: { seccion: 'Fideos', masa: '500 g', precio: '$4.500', etiqueta: '', cart: 'Fideos al huevo 500 g', extra: ['Paquete de 500 g', 'Nidos artesanales', 'Listos para congelar a -18°C'] }
         };
 
+        const RESENAS = [];
+
+        (function pintarResenas() {
+            const lista = document.getElementById('resenas-lista');
+            const vacio = document.getElementById('resenas-vacio');
+            if (!lista) return;
+            if (!RESENAS.length) {
+                lista.classList.add('hidden');
+                return;
+            }
+            if (vacio) vacio.classList.add('hidden');
+            lista.innerHTML = RESENAS.map((item) => `
+                <article class="rounded-2xl border border-red-100 p-5">
+                    <p class="text-amber-500 text-sm" aria-label="${item.estrellas || 5} estrellas">${'★'.repeat(item.estrellas || 5)}</p>
+                    <p class="mt-3 text-sm text-gray-600">${escHtml(item.texto)}</p>
+                    <p class="mt-4 text-sm font-semibold">${escHtml(item.nombre)}</p>
+                </article>
+            `).join('');
+        })();
+
         function verProducto(id) {
             const card = document.querySelector(`[data-ver="${id}"]`);
             const info = PRODUCTOS[id];
@@ -785,7 +847,10 @@
             precio.textContent = info.precio || 'Precio a confirmar';
             precio.classList.toggle('text-gray-400', !info.precio);
             document.getElementById('producto-desc').textContent = desc;
-            document.getElementById('producto-datos').innerHTML = info.extra.map((linea) => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-pasta-green text-xs"></i>${escHtml(linea)}</li>`).join('');
+            const coccion = info.seccion === 'Fideos'
+                ? 'Del freezer a agua hirviendo. Sacalo apenas flota.'
+                : 'Del freezer a agua hirviendo. Cuando flota, un minuto más.';
+            document.getElementById('producto-datos').innerHTML = [...info.extra, coccion].map((linea) => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-pasta-green text-xs"></i>${escHtml(linea)}</li>`).join('');
             const precioArg = info.precio ? `, '${info.precio}'` : '';
             document.getElementById('producto-accion').innerHTML = `<button data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-full bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2"><i class="fa-solid fa-plus"></i> Agregar al Pedido</button>`;
             const modal = document.getElementById('producto-modal');
