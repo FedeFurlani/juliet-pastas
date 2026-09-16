@@ -138,6 +138,15 @@
             </div>
         </div>
     </div>
+
+    <div id="aviso" class="fixed inset-0 z-[70] hidden items-end sm:items-center justify-center bg-black/40 p-3" onclick="if (event.target === this) cerrarAviso()">
+        <div class="bg-white w-full max-w-sm rounded-3xl shadow-2xl p-5" role="dialog" aria-modal="true" aria-labelledby="aviso-titulo">
+            <h2 id="aviso-titulo" class="font-serif text-2xl font-bold text-pasta-red"></h2>
+            <p id="aviso-texto" class="text-sm text-gray-600 mt-2"></p>
+            <div id="aviso-detalle" class="mt-3 space-y-1 text-sm"></div>
+            <div id="aviso-acciones" class="mt-5 flex gap-2"></div>
+        </div>
+    </div>
     <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm" onclick="toggleCart()"></div>
     
     <div id="cart-modal" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
@@ -522,14 +531,60 @@
             });
         }
 
-        function clearCart() {
-            if (confirm('¿Estás seguro de que querés vaciar todo tu pedido?')) {
-                for (let key in cart) {
-                    delete cart[key];
+        function abrirAviso({ titulo, texto, detalle, acciones }) {
+            document.getElementById('aviso-titulo').textContent = titulo;
+            document.getElementById('aviso-texto').textContent = texto || '';
+            const lista = document.getElementById('aviso-detalle');
+            lista.innerHTML = (detalle || []).map((linea) => `<p>${escHtml(linea)}</p>`).join('');
+            const caja = document.getElementById('aviso-acciones');
+            caja.innerHTML = '';
+            acciones.forEach((accion) => {
+                const el = document.createElement(accion.href ? 'a' : 'button');
+                if (!accion.href) el.type = 'button';
+                else el.href = accion.href;
+                el.className = 'flex-1 text-center font-semibold py-3 rounded-xl ' + (accion.peligro
+                    ? 'bg-pasta-red text-white'
+                    : accion.principal
+                        ? 'bg-pasta-green text-white'
+                        : 'bg-gray-100 text-pasta-dark');
+                el.textContent = accion.label;
+                if (!accion.href) {
+                    el.addEventListener('click', () => {
+                        cerrarAviso();
+                        if (accion.alClick) accion.alClick();
+                    });
                 }
-                updateCartCount();
-                renderCart();
+                caja.appendChild(el);
+            });
+            const modal = document.getElementById('aviso');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function cerrarAviso() {
+            const modal = document.getElementById('aviso');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function clearCart() {
+            if (!Object.keys(cart).length) return;
+            abrirAviso({
+                titulo: 'Vaciar pedido',
+                texto: '¿Querés sacar todos los productos del pedido?',
+                acciones: [
+                    { label: 'Cancelar' },
+                    { label: 'Vaciar', peligro: true, alClick: vaciarPedido }
+                ]
+            });
+        }
+
+        function vaciarPedido() {
+            for (let key in cart) {
+                delete cart[key];
             }
+            updateCartCount();
+            renderCart();
         }
 
         function addToCart(id, name, price) {
@@ -683,9 +738,23 @@
             message += "Entrega: a acordar después del pedido\n";
             if (suma > 0) message += `*Total: ${formatoPesos(suma)}*${sinPrecio ? ' (hay productos sin precio en la lista)' : ''}\n`;
             message += "\n¿Me confirmarían disponibilidad? ¡Gracias!";
-            
+
             const url = `https://wa.me/5492644053993?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            const detalle = Object.values(cart).map((item) => {
+                const valor = precioNumero(item.price);
+                const subtotal = valor === null ? 'a confirmar' : formatoPesos(valor * item.quantity);
+                return `${item.quantity} × ${item.corto || item.name} — ${subtotal}`;
+            });
+            if (suma > 0) detalle.push(`Total: ${formatoPesos(suma)}`);
+            abrirAviso({
+                titulo: 'Enviar pedido',
+                texto: 'La entrega se acuerda después de hacerlo.',
+                detalle,
+                acciones: [
+                    { label: 'Volver' },
+                    { label: 'WhatsApp', href: url, principal: true }
+                ]
+            });
         }
 
         const PRODUCTOS = {
@@ -738,7 +807,13 @@
             if (card) verProducto(card.dataset.ver);
         });
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') cerrarProducto();
+            if (event.key !== 'Escape') return;
+            const aviso = document.getElementById('aviso');
+            if (aviso && !aviso.classList.contains('hidden')) {
+                cerrarAviso();
+                return;
+            }
+            cerrarProducto();
         });
 
         function escHtml(valor) {
