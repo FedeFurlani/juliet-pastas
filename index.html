@@ -95,7 +95,7 @@
                     <a href="#farinatas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Farinatas</a>
                     <a href="#fideos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Fideos</a>
                     <a href="#coccion" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Cocción</a>
-                    <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a>
+                    <!-- <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a> -->
                     <a href="#nosotros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nosotros</a>
                 </div>
                 <div>
@@ -186,7 +186,7 @@
                 <i class="fa-brands fa-whatsapp text-xl"></i>
                 Hacer Pedido por WhatsApp
             </button>
-            <p class="text-xs text-center text-gray-500 mt-3">La entrega se acuerda después de hacer el pedido.</p>
+            <p class="text-sm text-center font-semibold text-pasta-red mt-3">La entrega se acuerda después de hacer el pedido.</p>
         </div>
     </div>
 
@@ -455,6 +455,7 @@
         </div>
     </section>
 
+    <!--
     <section id="resenas" class="py-16 scroll-mt-36 md:scroll-mt-28 bg-white border-y border-red-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-8">
@@ -470,6 +471,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- Footer -->
     <footer id="nosotros" class="bg-white pt-16 pb-8 border-t border-gray-200">
@@ -574,7 +576,11 @@
 
         function abrirAviso({ titulo, texto, detalle, acciones }) {
             document.getElementById('aviso-titulo').textContent = titulo;
-            document.getElementById('aviso-texto').textContent = texto || '';
+            const avisoTexto = document.getElementById('aviso-texto');
+            avisoTexto.textContent = texto || '';
+            avisoTexto.classList.toggle('text-pasta-red', Boolean(texto && texto.includes('entrega')));
+            avisoTexto.classList.toggle('font-semibold', Boolean(texto && texto.includes('entrega')));
+            avisoTexto.classList.toggle('text-gray-600', !texto || !texto.includes('entrega'));
             const lista = document.getElementById('aviso-detalle');
             lista.innerHTML = (detalle || []).map((linea) => `<p>${escHtml(linea)}</p>`).join('');
             const caja = document.getElementById('aviso-acciones');
@@ -822,7 +828,7 @@
             if (suma > 0) detalle.push(`Total: ${formatoPesos(suma)}`);
             abrirAviso({
                 titulo: 'Enviar pedido',
-                texto: 'La entrega se acuerda después de hacerlo.',
+                texto: 'La entrega se acuerda después de hacer el pedido.',
                 detalle,
                 acciones: [
                     { label: 'Volver' },
@@ -842,6 +848,7 @@
             fideos: { seccion: 'Fideos', masa: '500 g', precio: '$4.500', etiqueta: '', cart: 'Fideos al huevo 500 g', extra: ['Paquete de 500 g', 'Nidos artesanales', 'Listos para congelar a -18°C'] }
         };
 
+        /*
         const RESENAS = [];
 
         (function pintarResenas() {
@@ -861,6 +868,7 @@
                 </article>
             `).join('');
         })();
+        */
 
         function verProducto(id) {
             const card = document.querySelector(`[data-ver="${id}"]`);
