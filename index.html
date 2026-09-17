@@ -1497,17 +1497,42 @@
                     const mini = foto
                         ? `<img src="${escHtml(foto)}" alt="" class="w-12 h-12 rounded-xl object-cover shrink-0 bg-gray-100">`
                         : `<span class="w-12 h-12 rounded-xl bg-red-50 text-pasta-red flex items-center justify-center shrink-0"><i class="fa-solid ${escHtml(icono)}"></i></span>`;
+                    const card = document.querySelector(`[data-ver="${id}"]`);
+                    const desc = card ? (card.querySelector('p.text-gray-600')?.textContent.trim() || '') : '';
+                    const coccion = info.coccion !== undefined
+                        ? info.coccion
+                        : (info.seccion === 'Sorrentinos'
+                            ? 'Hervidos: 6/7 minutos desde congelados, hasta que floten. Retirar con espumadera.'
+                            : 'Del freezer a agua hirviendo.');
+                    const rinde = info.rinde !== undefined
+                        ? info.rinde
+                        : (info.seccion === 'Fideos' ? 'Rinde para 4 personas, aprox.' : 'Rinde para 2 personas, aprox.');
+                    const datos = [
+                        ...(rinde ? [rinde] : []),
+                        ...(info.extra || []),
+                        ...(coccion ? [coccion] : [])
+                    ];
+                    const datosHtml = datos.map((texto, i) => {
+                        const esCoccion = coccion && i === datos.length - 1 && texto === coccion;
+                        return `<li class="flex items-start gap-2"><i class="fa-solid ${esCoccion ? 'fa-fire text-amber-600' : 'fa-check text-pasta-green'} text-xs w-3 text-center mt-0.5"></i><span>${escHtml(texto)}</span></li>`;
+                    }).join('');
                     return `
-                        <div data-lista-item="${id}" class="flex items-center gap-3 py-2.5 border-b border-red-100 last:border-0 -mx-3 px-3 transition-colors">
-                            ${mini}
-                            <div class="min-w-0 flex-1">
-                                <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
-                                ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
-                                <p class="text-sm font-bold ${precioClass} mt-1">${escHtml(precio)}</p>
-                                <button type="button" onclick="verProducto('${id}')" class="mt-1 text-xs font-semibold text-pasta-green hover:text-green-800 underline-offset-2 hover:underline">Ver</button>
+                        <div data-lista-item="${id}" class="border-b border-red-100 last:border-0 -mx-3 transition-colors">
+                            <div class="flex items-center gap-3 py-2.5 px-3">
+                                ${mini}
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
+                                    ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
+                                    <p class="text-sm font-bold ${precioClass} mt-1">${escHtml(precio)}</p>
+                                    <button type="button" data-lista-ver="${id}" onclick="toggleListaInfo('${id}')" class="mt-1 text-xs font-semibold text-pasta-green hover:text-green-800 underline-offset-2 hover:underline">Ver</button>
+                                </div>
+                                <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
+                                    <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
+                                </div>
                             </div>
-                            <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
-                                <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
+                            <div data-lista-detalle="${id}" class="hidden px-3 pb-3">
+                                ${desc ? `<p class="text-sm text-gray-600 mb-2">${escHtml(desc)}</p>` : ''}
+                                <ul class="space-y-1 text-xs text-gray-600">${datosHtml}</ul>
                             </div>
                         </div>`;
                 }).join('');
@@ -1523,6 +1548,19 @@
             }).join('');
             actualizarBotones();
         })();
+
+        function toggleListaInfo(id) {
+            const detalle = document.querySelector(`[data-lista-detalle="${id}"]`);
+            const boton = document.querySelector(`[data-lista-ver="${id}"]`);
+            if (!detalle || !boton) return;
+            const abierto = !detalle.classList.contains('hidden');
+            document.querySelectorAll('[data-lista-detalle]').forEach((el) => el.classList.add('hidden'));
+            document.querySelectorAll('[data-lista-ver]').forEach((el) => { el.textContent = 'Ver'; });
+            if (!abierto) {
+                detalle.classList.remove('hidden');
+                boton.textContent = 'Ocultar';
+            }
+        }
 
         /*
         const RESENAS = [];
