@@ -97,7 +97,7 @@
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                    <a href="#rubros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Rubros</a>
+                    <a href="#lista" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Pedido</a>
                     <a href="#productos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Tienda</a>
                     <a href="#coccion" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Cocción</a>
                     <!-- <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a> -->
@@ -209,7 +209,7 @@
                     <p class="text-sm md:text-base text-pasta-cream/80 mb-5 font-light max-w-lg mx-auto lg:mx-0">
                         Sabor y practicidad para todos los días.
                     </p>
-                    <a href="#sorrentinos" class="bg-white text-pasta-red hover:bg-gray-100 px-6 py-2.5 rounded-full font-semibold transition-colors inline-flex items-center justify-center shadow-xl min-w-[15.5rem]">
+                    <a href="#lista" class="bg-white text-pasta-red hover:bg-gray-100 px-6 py-2.5 rounded-full font-semibold transition-colors inline-flex items-center justify-center shadow-xl min-w-[15.5rem]">
                         <span id="cta-frase" class="cta-frase">Conocé los Productos</span>
                     </a>
                 </div>
@@ -227,6 +227,23 @@
             <svg class="block w-full h-12 md:h-16" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,137.9,127,213,121.75,252.79,119.06,291.68,103.54,321.39,56.44Z" fill="#fdfbf7"></path>
             </svg>
+        </div>
+    </section>
+
+    <section id="lista" class="py-12 scroll-mt-28 bg-pasta-dark text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-8">
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-cream/70 font-semibold">Lista para pedir</p>
+                <h2 class="font-serif text-4xl font-bold text-white mt-2">Sumá a tu pedido</h2>
+                <p class="mt-3 text-pasta-cream/80 text-sm">Tocá + y listo. Después abrís el pedido y lo mandás por WhatsApp.</p>
+            </div>
+            <div id="lista-pedido" class="space-y-6"></div>
+            <div class="mt-8 text-center">
+                <button type="button" onclick="toggleCart()" class="inline-flex items-center gap-2 bg-pasta-red hover:bg-red-800 text-white font-semibold px-6 py-3 rounded-full shadow-lg">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    Ver pedido
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1265,7 +1282,39 @@
                 const item = cart[id];
                 let quitar = caja.querySelector('[data-quitar]');
                 const enFicha = caja.closest('#producto-accion');
-                caja.classList.toggle('gap-2', Boolean(item));
+                const enLista = caja.closest('#lista-pedido');
+                caja.classList.toggle('gap-2', Boolean(item) && !enLista);
+                if (enLista) {
+                    const cant = item ? item.quantity : 0;
+                    if (cant > 0) {
+                        btn.innerHTML = '+';
+                        btn.className = 'w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center shrink-0';
+                        if (!quitar) {
+                            quitar = document.createElement('button');
+                            quitar.type = 'button';
+                            quitar.dataset.quitar = id;
+                            quitar.addEventListener('click', () => quitarDeTarjeta(id));
+                            caja.insertBefore(quitar, btn);
+                        }
+                        quitar.className = 'w-9 h-9 rounded-full bg-white/15 text-white font-bold text-lg flex items-center justify-center shrink-0';
+                        quitar.innerHTML = '−';
+                        let marca = caja.querySelector('[data-lista-cant]');
+                        if (!marca) {
+                            marca = document.createElement('span');
+                            marca.dataset.listaCant = id;
+                            caja.insertBefore(marca, btn);
+                        }
+                        marca.className = 'min-w-[1.5rem] text-center font-bold text-yellow-300';
+                        marca.textContent = String(cant);
+                    } else {
+                        btn.innerHTML = '+';
+                        btn.className = 'w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center shrink-0';
+                        if (quitar) quitar.remove();
+                        const marca = caja.querySelector('[data-lista-cant]');
+                        if (marca) marca.remove();
+                    }
+                    return;
+                }
                 if (item) {
                     const cantidad = item.quantity
                         ? `<span class="ml-1 inline-flex items-center justify-center min-w-[1.15rem] h-5 px-1 rounded-full bg-yellow-400 text-pasta-dark text-[11px] font-bold">${item.quantity}</span>`
@@ -1366,6 +1415,69 @@
             'salsa-fileto': { seccion: 'Congelados', masa: '400 g', precio: '', cart: 'Salsa fileto 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar a fuego bajo.', extra: ['Producto de ejemplo'] },
             guiso: { seccion: 'Congelados', masa: 'Porción familiar', precio: '', cart: 'Guiso de lentejas', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar en olla o microondas.', extra: ['Producto de ejemplo'] }
         };
+
+        (function pintarListaPedido() {
+            const caja = document.getElementById('lista-pedido');
+            if (!caja) return;
+            const orden = [
+                'Pastas artesanales',
+                'Panificados',
+                'Carnes y supremas',
+                'Productos vegetarianos',
+                'Frutas y verduras',
+                'Aceites y conservas',
+                'Vinos seleccionados',
+                'Congelados'
+            ];
+            const rubroDe = {
+                Sorrentinos: 'Pastas artesanales',
+                Farinatas: 'Pastas artesanales',
+                Fideos: 'Pastas artesanales',
+                Panificados: 'Panificados',
+                'Carnes y supremas': 'Carnes y supremas',
+                'Productos vegetarianos': 'Productos vegetarianos',
+                'Frutas y verduras': 'Frutas y verduras',
+                'Aceites y conservas': 'Aceites y conservas',
+                'Vinos seleccionados': 'Vinos seleccionados',
+                Congelados: 'Congelados'
+            };
+            const grupos = {};
+            orden.forEach((nombre) => { grupos[nombre] = []; });
+            Object.entries(PRODUCTOS).forEach(([id, info]) => {
+                const rubro = rubroDe[info.seccion] || info.seccion;
+                if (!grupos[rubro]) grupos[rubro] = [];
+                const card = document.querySelector(`[data-ver="${id}"]`);
+                const nombre = card ? card.querySelector('h3').textContent.trim() : info.cart;
+                grupos[rubro].push({ id, info, nombre });
+            });
+            caja.innerHTML = orden.map((rubro) => {
+                const items = grupos[rubro] || [];
+                if (!items.length) return '';
+                const filas = items.map(({ id, info, nombre }) => {
+                    const precio = info.precio || 'A confirmar';
+                    const precioClass = info.precio ? 'text-yellow-300' : 'text-white/50';
+                    const precioArg = info.precio ? `, '${info.precio}'` : '';
+                    const detalle = [info.seccion !== rubro ? info.seccion : '', info.masa].filter(Boolean).join(' · ');
+                    return `
+                        <div class="flex items-center gap-3 py-2.5 border-b border-white/10 last:border-0">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-semibold leading-tight">${escHtml(nombre)}</p>
+                                ${detalle ? `<p class="text-xs text-white/55 mt-0.5">${escHtml(detalle)}</p>` : ''}
+                            </div>
+                            <p class="shrink-0 text-sm font-bold ${precioClass}">${escHtml(precio)}</p>
+                            <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
+                                <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
+                            </div>
+                        </div>`;
+                }).join('');
+                return `
+                    <div>
+                        <div class="bg-pasta-red text-white font-serif font-bold text-lg px-4 py-2 rounded-xl mb-1">${escHtml(rubro)}</div>
+                        <div class="bg-white/5 rounded-xl px-3">${filas}</div>
+                    </div>`;
+            }).join('');
+            actualizarBotones();
+        })();
 
         /*
         const RESENAS = [];
