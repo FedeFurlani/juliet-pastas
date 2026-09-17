@@ -114,7 +114,7 @@
         </div>
     </nav>
 
-    <button id="pedido-flotante" type="button" onclick="toggleCart()" class="fixed bottom-5 right-5 z-40 hidden items-center gap-2 bg-pasta-red text-white h-14 pl-4 pr-5 rounded-full shadow-2xl" aria-label="Ver pedido">
+    <button id="pedido-flotante" type="button" onclick="toggleCart()" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 hidden items-center gap-2 bg-pasta-red text-white h-14 pl-4 pr-5 rounded-full shadow-2xl" aria-label="Ver pedido">
         <i class="fa-solid fa-basket-shopping text-lg"></i>
         <span class="font-semibold text-sm">Pedido</span>
         <span id="flotante-cant" class="bg-yellow-400 text-pasta-dark text-xs font-bold min-w-[1.25rem] h-5 px-1 rounded-full inline-flex items-center justify-center">0</span>
@@ -230,12 +230,13 @@
         </div>
     </section>
 
-    <section id="lista" class="py-12 scroll-mt-28 bg-pasta-dark text-white">
+    <section id="lista" class="py-12 scroll-mt-28">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-8">
-                <p class="text-xs uppercase tracking-[0.28em] text-pasta-cream/70 font-semibold">Lista para pedir</p>
-                <h2 class="font-serif text-4xl font-bold text-white mt-2">Sumá a tu pedido</h2>
-                <p class="mt-3 text-pasta-cream/80 text-sm">Tocá + y listo. Después abrís el pedido y lo mandás por WhatsApp.</p>
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Lista para pedir</p>
+                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Armá tu pedido</h2>
+                <div class="h-1 w-24 bg-pasta-green mx-auto rounded mt-4"></div>
+                <p class="mt-4 text-gray-600 text-sm">Tocá + y listo. Después abrís el pedido y lo mandás por WhatsApp.</p>
             </div>
             <div id="lista-pedido" class="space-y-6"></div>
             <div class="mt-8 text-center">
@@ -451,11 +452,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Pan de campo</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$4.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Pan casero para descongelar y tostar. Ideal para el desayuno o la mesa.</p>
                             </div>
-                            <div data-controles="pan-campo" class="mt-2 flex gap-1.5"><button data-agregar="pan-campo" onclick="addToCart('pan-campo', 'Pan de campo 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="pan-campo" class="mt-2 flex gap-1.5"><button data-agregar="pan-campo" onclick="addToCart('pan-campo', 'Pan de campo 500 g', '$4.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="medialunas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -464,11 +465,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Medialunas de manteca</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">6 unidades</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$5.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congeladas, listas para el horno. Quedan crocantes en pocos minutos.</p>
                             </div>
-                            <div data-controles="medialunas" class="mt-2 flex gap-1.5"><button data-agregar="medialunas" onclick="addToCart('medialunas', 'Medialunas de manteca x 6')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="medialunas" class="mt-2 flex gap-1.5"><button data-agregar="medialunas" onclick="addToCart('medialunas', 'Medialunas de manteca x 6', '$5.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="empanadas-jyq" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -477,11 +478,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Empanadas de jamón y queso</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Docena</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$12.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Crudas y congeladas. Van directo al horno, sin descongelar.</p>
                             </div>
-                            <div data-controles="empanadas-jyq" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-jyq" onclick="addToCart('empanadas-jyq', 'Empanadas de jamón y queso x 12')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="empanadas-jyq" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-jyq" onclick="addToCart('empanadas-jyq', 'Empanadas de jamón y queso x 12', '$12.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -502,11 +503,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Supremas de pollo</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 2</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$12.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 2, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Supremas congeladas, listas para horno o sartén.</p>
                             </div>
-                            <div data-controles="supremas" class="mt-2 flex gap-1.5"><button data-agregar="supremas" onclick="addToCart('supremas', 'Supremas de pollo x 2')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="supremas" class="mt-2 flex gap-1.5"><button data-agregar="supremas" onclick="addToCart('supremas', 'Supremas de pollo x 2', '$12.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="milanesas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -515,11 +516,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Milanesas de nalga</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$14.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Rebozadas y congeladas. Se cocinan sin descongelar.</p>
                             </div>
-                            <div data-controles="milanesas" class="mt-2 flex gap-1.5"><button data-agregar="milanesas" onclick="addToCart('milanesas', 'Milanesas de nalga x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="milanesas" class="mt-2 flex gap-1.5"><button data-agregar="milanesas" onclick="addToCart('milanesas', 'Milanesas de nalga x 4', '$14.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="hamburguesas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -528,11 +529,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Hamburguesas caseras</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$9.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Medallones de carne para freezer. Plancha o sartén.</p>
                             </div>
-                            <div data-controles="hamburguesas" class="mt-2 flex gap-1.5"><button data-agregar="hamburguesas" onclick="addToCart('hamburguesas', 'Hamburguesas caseras x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="hamburguesas" class="mt-2 flex gap-1.5"><button data-agregar="hamburguesas" onclick="addToCart('hamburguesas', 'Hamburguesas caseras x 4', '$9.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -553,11 +554,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Medallones de lentejas</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$8.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congelados, para horno o sartén. Una opción sin carne.</p>
                             </div>
-                            <div data-controles="medallones" class="mt-2 flex gap-1.5"><button data-agregar="medallones" onclick="addToCart('medallones', 'Medallones de lentejas x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="medallones" class="mt-2 flex gap-1.5"><button data-agregar="medallones" onclick="addToCart('medallones', 'Medallones de lentejas x 4', '$8.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="empanadas-verdura" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -566,11 +567,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Empanadas de verdura</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Docena</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$11.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Acelga y queso, congeladas. Directo al horno.</p>
                             </div>
-                            <div data-controles="empanadas-verdura" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-verdura" onclick="addToCart('empanadas-verdura', 'Empanadas de verdura x 12')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="empanadas-verdura" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-verdura" onclick="addToCart('empanadas-verdura', 'Empanadas de verdura x 12', '$11.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="tarta-zapallo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -579,11 +580,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Tarta de zapallo</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Familiar</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$10.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 6, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Zapallo y queso, lista para hornear desde el freezer.</p>
                             </div>
-                            <div data-controles="tarta-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="tarta-zapallo" onclick="addToCart('tarta-zapallo', 'Tarta de zapallo y queso')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="tarta-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="tarta-zapallo" onclick="addToCart('tarta-zapallo', 'Tarta de zapallo y queso', '$10.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -604,11 +605,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Mix para salteado</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$4.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Verduras cortadas y congeladas, listas para la sartén.</p>
                             </div>
-                            <div data-controles="mix-wok" class="mt-2 flex gap-1.5"><button data-agregar="mix-wok" onclick="addToCart('mix-wok', 'Mix para salteado 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="mix-wok" class="mt-2 flex gap-1.5"><button data-agregar="mix-wok" onclick="addToCart('mix-wok', 'Mix para salteado 500 g', '$4.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="frutillas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -617,11 +618,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Frutillas</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$5.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congeladas, para licuados, postres o desayuno.</p>
                             </div>
-                            <div data-controles="frutillas" class="mt-2 flex gap-1.5"><button data-agregar="frutillas" onclick="addToCart('frutillas', 'Frutillas congeladas 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="frutillas" class="mt-2 flex gap-1.5"><button data-agregar="frutillas" onclick="addToCart('frutillas', 'Frutillas congeladas 400 g', '$5.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="pure-zapallo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -630,11 +631,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Puré de zapallo</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$3.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Porciones congeladas. Se calientan al microondas o a baño maría.</p>
                             </div>
-                            <div data-controles="pure-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="pure-zapallo" onclick="addToCart('pure-zapallo', 'Puré de zapallo 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="pure-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="pure-zapallo" onclick="addToCart('pure-zapallo', 'Puré de zapallo 500 g', '$3.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -655,11 +656,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Aceite de oliva</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">500 ml</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$8.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Extra virgen</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para la mesa y para terminar las pastas. Se guarda fresco, no congelado.</p>
                             </div>
-                            <div data-controles="oliva" class="mt-2 flex gap-1.5"><button data-agregar="oliva" onclick="addToCart('oliva', 'Aceite de oliva extra virgen 500 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="oliva" class="mt-2 flex gap-1.5"><button data-agregar="oliva" onclick="addToCart('oliva', 'Aceite de oliva extra virgen 500 ml', '$8.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="aceitunas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -668,11 +669,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Aceitunas verdes</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">200 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$3.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Conserva</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para picada o para acompañar. Se conservan en la heladera una vez abiertas.</p>
                             </div>
-                            <div data-controles="aceitunas" class="mt-2 flex gap-1.5"><button data-agregar="aceitunas" onclick="addToCart('aceitunas', 'Aceitunas verdes 200 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="aceitunas" class="mt-2 flex gap-1.5"><button data-agregar="aceitunas" onclick="addToCart('aceitunas', 'Aceitunas verdes 200 g', '$3.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="tomates" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -681,11 +682,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Tomates perita</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$2.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Conserva</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para salsas rápidas. Una base para las pastas de todos los días.</p>
                             </div>
-                            <div data-controles="tomates" class="mt-2 flex gap-1.5"><button data-agregar="tomates" onclick="addToCart('tomates', 'Tomates perita en conserva 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="tomates" class="mt-2 flex gap-1.5"><button data-agregar="tomates" onclick="addToCart('tomates', 'Tomates perita en conserva 400 g', '$2.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -706,11 +707,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Malbec</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$7.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Tinto</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para acompañar los sorrentinos de carne. Selección de la casa.</p>
                             </div>
-                            <div data-controles="malbec" class="mt-2 flex gap-1.5"><button data-agregar="malbec" onclick="addToCart('malbec', 'Malbec 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="malbec" class="mt-2 flex gap-1.5"><button data-agregar="malbec" onclick="addToCart('malbec', 'Malbec 750 ml', '$7.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="syrah" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -719,11 +720,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Syrah</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$7.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Tinto de San Juan</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Un clásico de la provincia, para la mesa de todos los días.</p>
                             </div>
-                            <div data-controles="syrah" class="mt-2 flex gap-1.5"><button data-agregar="syrah" onclick="addToCart('syrah', 'Syrah 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="syrah" class="mt-2 flex gap-1.5"><button data-agregar="syrah" onclick="addToCart('syrah', 'Syrah 750 ml', '$7.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="torrontes" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -732,11 +733,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Torrontés</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$6.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Blanco</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Fresco, para verduras, empanadas o una picada.</p>
                             </div>
-                            <div data-controles="torrontes" class="mt-2 flex gap-1.5"><button data-agregar="torrontes" onclick="addToCart('torrontes', 'Torrontés 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="torrontes" class="mt-2 flex gap-1.5"><button data-agregar="torrontes" onclick="addToCart('torrontes', 'Torrontés 750 ml', '$6.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -757,11 +758,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Papas noisette</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$4.000</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Del freezer al horno. Para acompañar milanesas o supremas.</p>
                             </div>
-                            <div data-controles="papas" class="mt-2 flex gap-1.5"><button data-agregar="papas" onclick="addToCart('papas', 'Papas noisette 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="papas" class="mt-2 flex gap-1.5"><button data-agregar="papas" onclick="addToCart('papas', 'Papas noisette 500 g', '$4.000')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="salsa-fileto" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -770,11 +771,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Salsa fileto</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$3.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Porción congelada para calentar y servir con las pastas.</p>
                             </div>
-                            <div data-controles="salsa-fileto" class="mt-2 flex gap-1.5"><button data-agregar="salsa-fileto" onclick="addToCart('salsa-fileto', 'Salsa fileto 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="salsa-fileto" class="mt-2 flex gap-1.5"><button data-agregar="salsa-fileto" onclick="addToCart('salsa-fileto', 'Salsa fileto 400 g', '$3.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                     <article data-ver="guiso" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
@@ -783,11 +784,11 @@
                             <div>
                                 <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Guiso de lentejas</h3>
                                 <p class="text-sm text-pasta-red font-semibold mb-1">Porción familiar</p>
-                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="font-semibold mb-1">$8.500</p>
                                 <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
                                 <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Listo para descongelar y calentar. Comida de olla para la semana.</p>
                             </div>
-                            <div data-controles="guiso" class="mt-2 flex gap-1.5"><button data-agregar="guiso" onclick="addToCart('guiso', 'Guiso de lentejas')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                            <div data-controles="guiso" class="mt-2 flex gap-1.5"><button data-agregar="guiso" onclick="addToCart('guiso', 'Guiso de lentejas', '$8.500')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
                         </div>
                     </article>
                 </div>
@@ -1296,7 +1297,7 @@
                             quitar.addEventListener('click', () => quitarDeTarjeta(id));
                             caja.insertBefore(quitar, btn);
                         }
-                        quitar.className = 'w-9 h-9 rounded-full bg-white/15 text-white font-bold text-lg flex items-center justify-center shrink-0';
+                        quitar.className = 'w-9 h-9 rounded-full border-2 border-pasta-red text-pasta-red font-bold text-lg flex items-center justify-center shrink-0 bg-white';
                         quitar.innerHTML = '−';
                         let marca = caja.querySelector('[data-lista-cant]');
                         if (!marca) {
@@ -1304,7 +1305,7 @@
                             marca.dataset.listaCant = id;
                             caja.insertBefore(marca, btn);
                         }
-                        marca.className = 'min-w-[1.5rem] text-center font-bold text-yellow-300';
+                        marca.className = 'min-w-[1.5rem] text-center font-bold text-pasta-dark';
                         marca.textContent = String(cant);
                     } else {
                         btn.innerHTML = '+';
@@ -1393,27 +1394,27 @@
             langostinos: { seccion: 'Sorrentinos', masa: 'Masa de cúrcuma', precio: '$16.000', etiqueta: 'Premium', cart: 'Sorrentinos Langostinos, ricota y cebolla', extra: ['Bandeja de 12 unidades', 'Con cebolla al verdeo', 'Listo para congelar a -18°C'] },
             farinatas: { seccion: 'Farinatas', masa: 'Masa al huevo', precio: '$12.000', etiqueta: '', cart: 'Farinatas', extra: ['Bandeja de 12 unidades', 'Arrolladas', 'Listas para congelar a -18°C'] },
             fideos: { seccion: 'Fideos', masa: '500 g', precio: '$4.500', etiqueta: '', cart: 'Fideos al huevo 500 g', extra: ['Paquete de 500 g', 'Nidos artesanales', 'Listos para congelar a -18°C'] },
-            'pan-campo': { seccion: 'Panificados', masa: '500 g', precio: '', cart: 'Pan de campo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y tostar, o llevar al horno.', extra: ['Producto de ejemplo', 'Listo para congelar'] },
-            medialunas: { seccion: 'Panificados', masa: '6 unidades', precio: '', cart: 'Medialunas de manteca x 6', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno directo desde el freezer, hasta que estén doradas.', extra: ['Producto de ejemplo'] },
-            'empanadas-jyq': { seccion: 'Panificados', masa: 'Docena', precio: '', cart: 'Empanadas de jamón y queso x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
-            supremas: { seccion: 'Carnes y supremas', masa: 'Pack x 2', precio: '', cart: 'Supremas de pollo x 2', rinde: 'Rinde para 2 personas, aprox.', coccion: 'Horno o sartén desde congeladas.', extra: ['Producto de ejemplo'] },
-            milanesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '', cart: 'Milanesas de nalga x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén, sin descongelar.', extra: ['Producto de ejemplo'] },
-            hamburguesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '', cart: 'Hamburguesas caseras x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Plancha o sartén, bien cocidas.', extra: ['Producto de ejemplo'] },
-            medallones: { seccion: 'Productos vegetarianos', masa: 'Pack x 4', precio: '', cart: 'Medallones de lentejas x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén desde el freezer.', extra: ['Producto de ejemplo', 'Sin carne'] },
-            'empanadas-verdura': { seccion: 'Productos vegetarianos', masa: 'Docena', precio: '', cart: 'Empanadas de verdura x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar.', extra: ['Producto de ejemplo'] },
-            'tarta-zapallo': { seccion: 'Productos vegetarianos', masa: 'Familiar', precio: '', cart: 'Tarta de zapallo y queso', rinde: 'Rinde para 6 personas, aprox.', coccion: 'Horno desde el freezer hasta que gratine.', extra: ['Producto de ejemplo'] },
-            'mix-wok': { seccion: 'Frutas y verduras', masa: '500 g', precio: '', cart: 'Mix para salteado 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Saltear en sartén bien caliente, sin descongelar antes.', extra: ['Producto de ejemplo'] },
-            frutillas: { seccion: 'Frutas y verduras', masa: '400 g', precio: '', cart: 'Frutillas congeladas 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Usar congeladas en licuados, o descongelar para postre.', extra: ['Producto de ejemplo'] },
-            'pure-zapallo': { seccion: 'Frutas y verduras', masa: '500 g', precio: '', cart: 'Puré de zapallo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Calentar al microondas o a baño maría.', extra: ['Producto de ejemplo'] },
-            oliva: { seccion: 'Aceites y conservas', masa: '500 ml', precio: '', cart: 'Aceite de oliva extra virgen 500 ml', coccion: '', extra: ['Producto de ejemplo', 'No va al freezer', 'Guardar en lugar fresco'] },
-            aceitunas: { seccion: 'Aceites y conservas', masa: '200 g', precio: '', cart: 'Aceitunas verdes 200 g', coccion: '', extra: ['Producto de ejemplo', 'Una vez abierto, heladera'] },
-            tomates: { seccion: 'Aceites y conservas', masa: '400 g', precio: '', cart: 'Tomates perita en conserva 400 g', coccion: '', extra: ['Producto de ejemplo', 'Para salsas'] },
-            malbec: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Malbec 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir fresco, no congelar'] },
-            syrah: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Syrah 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Selección de San Juan'] },
-            torrontes: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Torrontés 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir frío'] },
-            papas: { seccion: 'Congelados', masa: '500 g', precio: '', cart: 'Papas noisette 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
-            'salsa-fileto': { seccion: 'Congelados', masa: '400 g', precio: '', cart: 'Salsa fileto 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar a fuego bajo.', extra: ['Producto de ejemplo'] },
-            guiso: { seccion: 'Congelados', masa: 'Porción familiar', precio: '', cart: 'Guiso de lentejas', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar en olla o microondas.', extra: ['Producto de ejemplo'] }
+            'pan-campo': { seccion: 'Panificados', masa: '500 g', precio: '$4.500', cart: 'Pan de campo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y tostar, o llevar al horno.', extra: ['Producto de ejemplo', 'Listo para congelar'] },
+            medialunas: { seccion: 'Panificados', masa: '6 unidades', precio: '$5.500', cart: 'Medialunas de manteca x 6', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno directo desde el freezer, hasta que estén doradas.', extra: ['Producto de ejemplo'] },
+            'empanadas-jyq': { seccion: 'Panificados', masa: 'Docena', precio: '$12.000', cart: 'Empanadas de jamón y queso x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
+            supremas: { seccion: 'Carnes y supremas', masa: 'Pack x 2', precio: '$12.000', cart: 'Supremas de pollo x 2', rinde: 'Rinde para 2 personas, aprox.', coccion: 'Horno o sartén desde congeladas.', extra: ['Producto de ejemplo'] },
+            milanesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '$14.000', cart: 'Milanesas de nalga x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén, sin descongelar.', extra: ['Producto de ejemplo'] },
+            hamburguesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '$9.500', cart: 'Hamburguesas caseras x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Plancha o sartén, bien cocidas.', extra: ['Producto de ejemplo'] },
+            medallones: { seccion: 'Productos vegetarianos', masa: 'Pack x 4', precio: '$8.500', cart: 'Medallones de lentejas x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén desde el freezer.', extra: ['Producto de ejemplo', 'Sin carne'] },
+            'empanadas-verdura': { seccion: 'Productos vegetarianos', masa: 'Docena', precio: '$11.000', cart: 'Empanadas de verdura x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar.', extra: ['Producto de ejemplo'] },
+            'tarta-zapallo': { seccion: 'Productos vegetarianos', masa: 'Familiar', precio: '$10.000', cart: 'Tarta de zapallo y queso', rinde: 'Rinde para 6 personas, aprox.', coccion: 'Horno desde el freezer hasta que gratine.', extra: ['Producto de ejemplo'] },
+            'mix-wok': { seccion: 'Frutas y verduras', masa: '500 g', precio: '$4.500', cart: 'Mix para salteado 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Saltear en sartén bien caliente, sin descongelar antes.', extra: ['Producto de ejemplo'] },
+            frutillas: { seccion: 'Frutas y verduras', masa: '400 g', precio: '$5.500', cart: 'Frutillas congeladas 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Usar congeladas en licuados, o descongelar para postre.', extra: ['Producto de ejemplo'] },
+            'pure-zapallo': { seccion: 'Frutas y verduras', masa: '500 g', precio: '$3.500', cart: 'Puré de zapallo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Calentar al microondas o a baño maría.', extra: ['Producto de ejemplo'] },
+            oliva: { seccion: 'Aceites y conservas', masa: '500 ml', precio: '$8.500', cart: 'Aceite de oliva extra virgen 500 ml', coccion: '', extra: ['Producto de ejemplo', 'No va al freezer', 'Guardar en lugar fresco'] },
+            aceitunas: { seccion: 'Aceites y conservas', masa: '200 g', precio: '$3.500', cart: 'Aceitunas verdes 200 g', coccion: '', extra: ['Producto de ejemplo', 'Una vez abierto, heladera'] },
+            tomates: { seccion: 'Aceites y conservas', masa: '400 g', precio: '$2.500', cart: 'Tomates perita en conserva 400 g', coccion: '', extra: ['Producto de ejemplo', 'Para salsas'] },
+            malbec: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '$7.500', cart: 'Malbec 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir fresco, no congelar'] },
+            syrah: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '$7.000', cart: 'Syrah 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Selección de San Juan'] },
+            torrontes: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '$6.500', cart: 'Torrontés 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir frío'] },
+            papas: { seccion: 'Congelados', masa: '500 g', precio: '$4.000', cart: 'Papas noisette 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
+            'salsa-fileto': { seccion: 'Congelados', masa: '400 g', precio: '$3.500', cart: 'Salsa fileto 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar a fuego bajo.', extra: ['Producto de ejemplo'] },
+            guiso: { seccion: 'Congelados', masa: 'Porción familiar', precio: '$8.500', cart: 'Guiso de lentejas', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar en olla o microondas.', extra: ['Producto de ejemplo'] }
         };
 
         (function pintarListaPedido() {
@@ -1429,6 +1430,16 @@
                 'Vinos seleccionados',
                 'Congelados'
             ];
+            const iconoRubro = {
+                'Pastas artesanales': 'fa-wheat-awn',
+                'Panificados': 'fa-bread-slice',
+                'Carnes y supremas': 'fa-drumstick-bite',
+                'Productos vegetarianos': 'fa-seedling',
+                'Frutas y verduras': 'fa-carrot',
+                'Aceites y conservas': 'fa-bottle-droplet',
+                'Vinos seleccionados': 'fa-wine-bottle',
+                'Congelados': 'fa-snowflake'
+            };
             const rubroDe = {
                 Sorrentinos: 'Pastas artesanales',
                 Farinatas: 'Pastas artesanales',
@@ -1448,32 +1459,51 @@
                 if (!grupos[rubro]) grupos[rubro] = [];
                 const card = document.querySelector(`[data-ver="${id}"]`);
                 const nombre = card ? card.querySelector('h3').textContent.trim() : info.cart;
-                grupos[rubro].push({ id, info, nombre });
+                const img = card ? card.querySelector('img') : null;
+                const iconoEl = card ? card.querySelector('i[class*="fa-"]') : null;
+                const icono = iconoEl
+                    ? [...iconoEl.classList].find((c) => c.startsWith('fa-') && c !== 'fa-solid') || 'fa-utensils'
+                    : 'fa-utensils';
+                grupos[rubro].push({
+                    id,
+                    info,
+                    nombre,
+                    foto: img ? img.getAttribute('src') : '',
+                    icono
+                });
             });
             caja.innerHTML = orden.map((rubro) => {
                 const items = grupos[rubro] || [];
                 if (!items.length) return '';
-                const filas = items.map(({ id, info, nombre }) => {
+                const filas = items.map(({ id, info, nombre, foto, icono }) => {
                     const precio = info.precio || 'A confirmar';
-                    const precioClass = info.precio ? 'text-yellow-300' : 'text-white/50';
+                    const precioClass = info.precio ? 'text-pasta-red' : 'text-gray-400';
                     const precioArg = info.precio ? `, '${info.precio}'` : '';
                     const detalle = [info.seccion !== rubro ? info.seccion : '', info.masa].filter(Boolean).join(' · ');
+                    const mini = foto
+                        ? `<img src="${escHtml(foto)}" alt="" class="w-12 h-12 rounded-xl object-cover shrink-0 bg-gray-100">`
+                        : `<span class="w-12 h-12 rounded-xl bg-red-50 text-pasta-red flex items-center justify-center shrink-0"><i class="fa-solid ${escHtml(icono)}"></i></span>`;
                     return `
-                        <div class="flex items-center gap-3 py-2.5 border-b border-white/10 last:border-0">
+                        <div class="flex items-center gap-3 py-2.5 border-b border-red-100 last:border-0">
+                            ${mini}
                             <div class="min-w-0 flex-1">
-                                <p class="font-semibold leading-tight">${escHtml(nombre)}</p>
-                                ${detalle ? `<p class="text-xs text-white/55 mt-0.5">${escHtml(detalle)}</p>` : ''}
+                                <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
+                                ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
+                                <p class="text-sm font-bold ${precioClass} mt-1">${escHtml(precio)}</p>
                             </div>
-                            <p class="shrink-0 text-sm font-bold ${precioClass}">${escHtml(precio)}</p>
                             <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
                                 <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
                             </div>
                         </div>`;
                 }).join('');
+                const iconoCat = iconoRubro[rubro] || 'fa-utensils';
                 return `
                     <div>
-                        <div class="bg-pasta-red text-white font-serif font-bold text-lg px-4 py-2 rounded-xl mb-1">${escHtml(rubro)}</div>
-                        <div class="bg-white/5 rounded-xl px-3">${filas}</div>
+                        <div class="bg-pasta-red text-white font-serif font-bold text-lg px-4 py-2 rounded-xl mb-1 flex items-center gap-2">
+                            <i class="fa-solid ${escHtml(iconoCat)} text-base"></i>
+                            <span>${escHtml(rubro)}</span>
+                        </div>
+                        <div class="bg-white border border-red-100 rounded-xl px-3">${filas}</div>
                     </div>`;
             }).join('');
             actualizarBotones();
