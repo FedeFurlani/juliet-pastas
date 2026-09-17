@@ -1547,17 +1547,34 @@
                     return `${encabezado}${filas}`;
                 }).join('');
                 const iconoCat = iconoRubro[rubro] || 'fa-utensils';
+                const rubroId = rubro.toLowerCase().replace(/\s+/g, '-');
                 return `
-                    <div>
-                        <div class="bg-pasta-red text-white font-serif font-bold text-lg px-4 py-2 rounded-xl mb-1 flex items-center gap-2">
+                    <div data-lista-rubro="${escHtml(rubroId)}">
+                        <button type="button" onclick="toggleListaRubro('${escHtml(rubroId)}')" class="w-full bg-pasta-red text-white font-serif font-bold text-lg px-4 py-2.5 rounded-xl mb-1 flex items-center gap-2 text-left">
                             <i class="fa-solid ${escHtml(iconoCat)} text-base"></i>
-                            <span>${escHtml(rubro)}</span>
-                        </div>
-                        <div class="bg-white border border-red-100 rounded-xl px-3 pb-1">${bloques}</div>
+                            <span class="flex-1">${escHtml(rubro)}</span>
+                            <span data-lista-rubro-ver class="text-xs font-sans font-semibold uppercase tracking-wide bg-white/20 px-2.5 py-1 rounded-full">Ver</span>
+                        </button>
+                        <div data-lista-rubro-panel class="hidden bg-white border border-red-100 rounded-xl px-3 pb-1">${bloques}</div>
                     </div>`;
             }).join('');
             actualizarBotones();
         })();
+
+        function toggleListaRubro(id) {
+            const bloque = document.querySelector(`[data-lista-rubro="${id}"]`);
+            if (!bloque) return;
+            const panel = bloque.querySelector('[data-lista-rubro-panel]');
+            const etiqueta = bloque.querySelector('[data-lista-rubro-ver]');
+            if (!panel) return;
+            const abierto = !panel.classList.contains('hidden');
+            document.querySelectorAll('[data-lista-rubro-panel]').forEach((el) => el.classList.add('hidden'));
+            document.querySelectorAll('[data-lista-rubro-ver]').forEach((el) => { el.textContent = 'Ver'; });
+            if (!abierto) {
+                panel.classList.remove('hidden');
+                if (etiqueta) etiqueta.textContent = 'Cerrar';
+            }
+        }
 
         function toggleListaInfo(id) {
             const detalle = document.querySelector(`[data-lista-detalle="${id}"]`);
