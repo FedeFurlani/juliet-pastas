@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juliet Pastas | Pastas Artesanales</title>
+    <title>Casa del Sabor | Congelados y productos seleccionados</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -90,17 +90,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="font-serif text-2xl font-bold text-pasta-red flex items-center gap-2">
-                        <i id="brand-icon" class="fa-solid fa-wheat-awn"></i>
-                        <img id="brand-logo" alt="Juliet Pastas" class="hidden h-10 w-10 rounded-full object-cover border border-pasta-red">
-                        Juliet Pastas
+                    <span class="font-serif text-xl sm:text-2xl font-bold text-pasta-red flex items-center gap-2">
+                        <img src="IMAGENES/logo-casa-del-sabor.png?v=2" alt="" class="h-12 w-12 object-contain">
+                        Casa del Sabor
                     </span>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
-                    <a href="#sorrentinos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Sorrentinos</a>
-                    <a href="#farinatas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Farinatas</a>
-                    <a href="#fideos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Fideos</a>
+                    <a href="#rubros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Rubros</a>
+                    <a href="#productos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Tienda</a>
                     <a href="#coccion" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Cocción</a>
                     <!-- <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a> -->
                     <a href="#nosotros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nosotros</a>
@@ -115,14 +113,6 @@
             </div>
         </div>
     </nav>
-
-    <div class="md:hidden fixed top-20 inset-x-0 z-40 bg-pasta-cream/95 backdrop-blur border-b border-red-100">
-        <div class="flex gap-2 px-3 py-2">
-            <a href="#sorrentinos" data-seccion class="flex-1 text-center bg-white text-pasta-red border border-pasta-red px-2 py-2 rounded-full text-xs font-semibold">Sorrentinos</a>
-            <a href="#farinatas" data-seccion class="flex-1 text-center bg-white text-pasta-red border border-pasta-red px-2 py-2 rounded-full text-xs font-semibold">Farinatas</a>
-            <a href="#fideos" data-seccion class="flex-1 text-center bg-white text-pasta-red border border-pasta-red px-2 py-2 rounded-full text-xs font-semibold">Fideos</a>
-        </div>
-    </div>
 
     <button id="pedido-flotante" type="button" onclick="toggleCart()" class="fixed bottom-5 right-5 z-40 hidden items-center gap-2 bg-pasta-red text-white h-14 pl-4 pr-5 rounded-full shadow-2xl" aria-label="Ver pedido">
         <i class="fa-solid fa-basket-shopping text-lg"></i>
@@ -198,7 +188,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-bg text-white pt-36 pb-10 md:pt-28 md:pb-12 relative overflow-hidden">
+    <section id="inicio" class="hero-bg text-white pt-28 pb-10 md:pb-12 relative overflow-hidden">
         <!-- Decorative elements -->
         <div class="absolute top-0 left-0 w-full h-4 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGgyMHY0MEgwem0yMCAwaDIwdjQwSDIweiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==')] opacity-10"></div>
         <div class="absolute -bottom-10 -right-10 text-white/10">
@@ -210,11 +200,14 @@
                 <div class="text-center lg:text-left">
                     <span class="uppercase tracking-widest text-sm font-semibold text-pasta-cream/80 mb-2 block">San Juan, Argentina</span>
                     <h1 class="font-serif text-4xl md:text-5xl font-bold mb-3 leading-tight">
-                        Pastas <br>
-                        <span class="italic font-light">Artesanales</span>
+                        Casa del <br>
+                        <span class="italic font-light">Sabor</span>
                     </h1>
-                    <p class="text-base md:text-lg text-pasta-cream/90 mb-5 font-light max-w-lg mx-auto lg:mx-0">
-                        Sabor casero, hecho con amor. Ingredientes frescos y recetas tradicionales directas a tu mesa.
+                    <p class="text-base md:text-lg text-pasta-cream/90 mb-2 font-light max-w-lg mx-auto lg:mx-0">
+                        Congelados y productos seleccionados.
+                    </p>
+                    <p class="text-sm md:text-base text-pasta-cream/80 mb-5 font-light max-w-lg mx-auto lg:mx-0">
+                        Sabor y practicidad para todos los días.
                     </p>
                     <a href="#sorrentinos" class="bg-white text-pasta-red hover:bg-gray-100 px-6 py-2.5 rounded-full font-semibold transition-colors inline-flex items-center justify-center shadow-xl min-w-[15.5rem]">
                         <span id="cta-frase" class="cta-frase">Conocé los Productos</span>
@@ -238,21 +231,34 @@
     </section>
 
     <!-- Products Section -->
-    <section id="productos" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mb-4">Nuestras Especialidades</h2>
+    <section id="productos" class="relative scroll-mt-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="text-center mb-8">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mb-4">Armá tu pedido</h2>
                 <div class="h-1 w-24 bg-pasta-green mx-auto rounded"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Elaborados con masa casera e ingredientes de primera calidad. Elegí la sección y armá tu pedido.</p>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Elegí un rubro y sumá productos a tu pedido.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-3 mb-14">
-                <a href="#sorrentinos" class="bg-pasta-red text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-md hover:bg-red-800 transition-colors">Sorrentinos</a>
-                <a href="#farinatas" class="bg-white text-pasta-red border-2 border-pasta-red px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-50 transition-colors">Farinatas</a>
-                <a href="#fideos" class="bg-white text-pasta-red border-2 border-pasta-red px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-red-50 transition-colors">Fideos</a>
+            <div id="menu-rubros" class="sticky top-20 z-30 -mx-4 px-4 py-3 mb-8 bg-pasta-cream/95 backdrop-blur border-y border-red-100">
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button type="button" data-rubro="pastas" class="rubro-btn bg-pasta-red text-white border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold shadow-md">Pastas</button>
+                    <button type="button" data-rubro="panificados" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Panificados</button>
+                    <button type="button" data-rubro="carnes" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Carnes</button>
+                    <button type="button" data-rubro="vegetarianos" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Vegetarianos</button>
+                    <button type="button" data-rubro="frutas" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Frutas</button>
+                    <button type="button" data-rubro="aceites" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Aceites</button>
+                    <button type="button" data-rubro="vinos" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Vinos</button>
+                    <button type="button" data-rubro="congelados" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Congelados</button>
+                </div>
             </div>
 
-            <div id="sorrentinos" class="scroll-mt-36 md:scroll-mt-28 mb-20">
+            <div id="pastas" data-panel="pastas" class="rubro-panel">
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <a href="#sorrentinos" class="bg-pasta-red text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md">Sorrentinos</a>
+                <a href="#farinatas" class="bg-white text-pasta-red border border-pasta-red px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">Farinatas</a>
+                <a href="#fideos" class="bg-white text-pasta-red border border-pasta-red px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">Fideos</a>
+            </div>
+            <div id="sorrentinos" class="scroll-mt-40 mb-16">
                 <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Sección</p>
@@ -411,6 +417,364 @@
                     </article>
                 </div>
             </div>
+            </div>
+
+            <div id="panificados" data-panel="panificados" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Panificados</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="pan-campo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-bread-slice text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Pan de campo</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Pan casero para descongelar y tostar. Ideal para el desayuno o la mesa.</p>
+                            </div>
+                            <div data-controles="pan-campo" class="mt-2 flex gap-1.5"><button data-agregar="pan-campo" onclick="addToCart('pan-campo', 'Pan de campo 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="medialunas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-cookie-bite text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Medialunas de manteca</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">6 unidades</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congeladas, listas para el horno. Quedan crocantes en pocos minutos.</p>
+                            </div>
+                            <div data-controles="medialunas" class="mt-2 flex gap-1.5"><button data-agregar="medialunas" onclick="addToCart('medialunas', 'Medialunas de manteca x 6')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="empanadas-jyq" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-mortar-pestle text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Empanadas de jamón y queso</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Docena</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Crudas y congeladas. Van directo al horno, sin descongelar.</p>
+                            </div>
+                            <div data-controles="empanadas-jyq" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-jyq" onclick="addToCart('empanadas-jyq', 'Empanadas de jamón y queso x 12')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="carnes" data-panel="carnes" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Carnes y supremas</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="supremas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-drumstick-bite text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Supremas de pollo</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 2</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 2, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Supremas congeladas, listas para horno o sartén.</p>
+                            </div>
+                            <div data-controles="supremas" class="mt-2 flex gap-1.5"><button data-agregar="supremas" onclick="addToCart('supremas', 'Supremas de pollo x 2')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="milanesas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-utensils text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Milanesas de nalga</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Rebozadas y congeladas. Se cocinan sin descongelar.</p>
+                            </div>
+                            <div data-controles="milanesas" class="mt-2 flex gap-1.5"><button data-agregar="milanesas" onclick="addToCart('milanesas', 'Milanesas de nalga x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="hamburguesas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-burger text-5xl text-pasta-red/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Hamburguesas caseras</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Medallones de carne para freezer. Plancha o sartén.</p>
+                            </div>
+                            <div data-controles="hamburguesas" class="mt-2 flex gap-1.5"><button data-agregar="hamburguesas" onclick="addToCart('hamburguesas', 'Hamburguesas caseras x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="vegetarianos" data-panel="vegetarianos" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Productos vegetarianos</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="medallones" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-seedling text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Medallones de lentejas</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Pack x 4</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congelados, para horno o sartén. Una opción sin carne.</p>
+                            </div>
+                            <div data-controles="medallones" class="mt-2 flex gap-1.5"><button data-agregar="medallones" onclick="addToCart('medallones', 'Medallones de lentejas x 4')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="empanadas-verdura" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-leaf text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Empanadas de verdura</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Docena</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Acelga y queso, congeladas. Directo al horno.</p>
+                            </div>
+                            <div data-controles="empanadas-verdura" class="mt-2 flex gap-1.5"><button data-agregar="empanadas-verdura" onclick="addToCart('empanadas-verdura', 'Empanadas de verdura x 12')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="tarta-zapallo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-cheese text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Tarta de zapallo</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Familiar</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 6, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Zapallo y queso, lista para hornear desde el freezer.</p>
+                            </div>
+                            <div data-controles="tarta-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="tarta-zapallo" onclick="addToCart('tarta-zapallo', 'Tarta de zapallo y queso')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="frutas" data-panel="frutas" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Frutas y verduras</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="mix-wok" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-carrot text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Mix para salteado</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Verduras cortadas y congeladas, listas para la sartén.</p>
+                            </div>
+                            <div data-controles="mix-wok" class="mt-2 flex gap-1.5"><button data-agregar="mix-wok" onclick="addToCart('mix-wok', 'Mix para salteado 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="frutillas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-apple-whole text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Frutillas</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Congeladas, para licuados, postres o desayuno.</p>
+                            </div>
+                            <div data-controles="frutillas" class="mt-2 flex gap-1.5"><button data-agregar="frutillas" onclick="addToCart('frutillas', 'Frutillas congeladas 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="pure-zapallo" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-green-50 flex items-center justify-center"><i class="fa-solid fa-bowl-food text-5xl text-pasta-green/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Puré de zapallo</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Porciones congeladas. Se calientan al microondas o a baño maría.</p>
+                            </div>
+                            <div data-controles="pure-zapallo" class="mt-2 flex gap-1.5"><button data-agregar="pure-zapallo" onclick="addToCart('pure-zapallo', 'Puré de zapallo 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="aceites" data-panel="aceites" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Aceites y conservas</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos. No van al freezer. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="oliva" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-amber-50 flex items-center justify-center"><i class="fa-solid fa-bottle-droplet text-5xl text-amber-700/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Aceite de oliva</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">500 ml</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Extra virgen</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para la mesa y para terminar las pastas. Se guarda fresco, no congelado.</p>
+                            </div>
+                            <div data-controles="oliva" class="mt-2 flex gap-1.5"><button data-agregar="oliva" onclick="addToCart('oliva', 'Aceite de oliva extra virgen 500 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="aceitunas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-amber-50 flex items-center justify-center"><i class="fa-solid fa-jar text-5xl text-amber-700/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Aceitunas verdes</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">200 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Conserva</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para picada o para acompañar. Se conservan en la heladera una vez abiertas.</p>
+                            </div>
+                            <div data-controles="aceitunas" class="mt-2 flex gap-1.5"><button data-agregar="aceitunas" onclick="addToCart('aceitunas', 'Aceitunas verdes 200 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="tomates" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-amber-50 flex items-center justify-center"><i class="fa-solid fa-jar text-5xl text-pasta-red/70"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Tomates perita</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Conserva</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para salsas rápidas. Una base para las pastas de todos los días.</p>
+                            </div>
+                            <div data-controles="tomates" class="mt-2 flex gap-1.5"><button data-agregar="tomates" onclick="addToCart('tomates', 'Tomates perita en conserva 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="vinos" data-panel="vinos" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">Rubro</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Vinos seleccionados</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos de San Juan. Precio a confirmar.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="malbec" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-stone-100 flex items-center justify-center"><i class="fa-solid fa-wine-bottle text-5xl text-pasta-dark/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Malbec</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Tinto</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Para acompañar los sorrentinos de carne. Selección de la casa.</p>
+                            </div>
+                            <div data-controles="malbec" class="mt-2 flex gap-1.5"><button data-agregar="malbec" onclick="addToCart('malbec', 'Malbec 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="syrah" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-stone-100 flex items-center justify-center"><i class="fa-solid fa-wine-glass text-5xl text-pasta-dark/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Syrah</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Tinto de San Juan</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Un clásico de la provincia, para la mesa de todos los días.</p>
+                            </div>
+                            <div data-controles="syrah" class="mt-2 flex gap-1.5"><button data-agregar="syrah" onclick="addToCart('syrah', 'Syrah 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="torrontes" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-stone-100 flex items-center justify-center"><i class="fa-solid fa-champagne-glasses text-5xl text-pasta-dark/80"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Torrontés</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">750 ml</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Blanco</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Fresco, para verduras, empanadas o una picada.</p>
+                            </div>
+                            <div data-controles="torrontes" class="mt-2 flex gap-1.5"><button data-agregar="torrontes" onclick="addToCart('torrontes', 'Torrontés 750 ml')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="congelados" data-panel="congelados" class="rubro-panel hidden">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8 border-b border-red-100 pb-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-widest text-pasta-green font-semibold mb-1">La base de la casa</p>
+                        <h3 class="font-serif text-3xl md:text-4xl font-bold">Congelados</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">Ejemplos para tener siempre en el freezer.</p>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 lg:gap-10">
+                    <article data-ver="papas" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-snowflake text-5xl text-pasta-red/70"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Papas noisette</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">500 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 3, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Del freezer al horno. Para acompañar milanesas o supremas.</p>
+                            </div>
+                            <div data-controles="papas" class="mt-2 flex gap-1.5"><button data-agregar="papas" onclick="addToCart('papas', 'Papas noisette 500 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="salsa-fileto" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-blender text-5xl text-pasta-red/70"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Salsa fileto</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">400 g</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Porción congelada para calentar y servir con las pastas.</p>
+                            </div>
+                            <div data-controles="salsa-fileto" class="mt-2 flex gap-1.5"><button data-agregar="salsa-fileto" onclick="addToCart('salsa-fileto', 'Salsa fileto 400 g')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                    <article data-ver="guiso" class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100 flex flex-col cursor-pointer">
+                        <div class="h-36 sm:h-64 overflow-hidden relative bg-red-50 flex items-center justify-center"><i class="fa-solid fa-mug-hot text-5xl text-pasta-red/70"></i></div>
+                        <div class="p-3 sm:p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-base sm:text-2xl font-bold mb-1 sm:mb-2 leading-tight">Guiso de lentejas</h3>
+                                <p class="text-sm text-pasta-red font-semibold mb-1">Porción familiar</p>
+                                <p class="font-semibold mb-1 text-gray-400">A confirmar</p>
+                                <p class="text-[11px] sm:text-xs text-pasta-green font-semibold mb-2">Rinde para 4, aprox.</p>
+                                <p class="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 line-clamp-3">Listo para descongelar y calentar. Comida de olla para la semana.</p>
+                            </div>
+                            <div data-controles="guiso" class="mt-2 flex gap-1.5"><button data-agregar="guiso" onclick="addToCart('guiso', 'Guiso de lentejas')" class="agregar-btn flex-1 bg-white border-2 border-pasta-red text-pasta-red hover:bg-pasta-red hover:text-white py-2 sm:py-2.5 rounded-lg text-xs sm:text-base font-medium transition-colors flex items-center justify-center gap-1 sm:gap-2"><i class="fa-solid fa-plus"></i> <span class="sm:hidden">Agregar</span><span class="hidden sm:inline">Agregar al Pedido</span></button></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -430,18 +794,18 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
                 <div class="py-4 md:py-0 px-4">
                     <i class="fa-solid fa-snowflake text-4xl text-blue-300 mb-4"></i>
-                    <h4 class="font-serif text-xl font-bold mb-2">Listos para Freezar</h4>
-                    <p class="text-gray-300 text-sm">Nuestras pastas se entregan listas para mantener a -18°C. ¡Tenelas siempre a mano!</p>
+                    <h4 class="font-serif text-xl font-bold mb-2">Siempre listos</h4>
+                    <p class="text-gray-300 text-sm">Alimentos congelados para tener a mano y resolver la comida de todos los días.</p>
                 </div>
                 <div class="py-4 md:py-0 px-4">
                     <i class="fa-solid fa-box-open text-4xl text-amber-500 mb-4"></i>
-                    <h4 class="font-serif text-xl font-bold mb-2">Presentación</h4>
-                    <p class="text-gray-300 text-sm">Cada bandeja contiene 12 unidades abundantes, ideales para 2 porciones bien servidas.</p>
+                    <h4 class="font-serif text-xl font-bold mb-2">Seleccionados</h4>
+                    <p class="text-gray-300 text-sm">También aceites de oliva, conservas y vinos. No todo es congelado: es lo que está bueno tener en casa.</p>
                 </div>
                 <div class="py-4 md:py-0 px-4">
                     <i class="fa-solid fa-heart text-4xl text-pasta-red mb-4"></i>
-                    <h4 class="font-serif text-xl font-bold mb-2">100% Artesanal</h4>
-                    <p class="text-gray-300 text-sm">Sin conservantes artificiales. Masa e ingredientes frescos, hechos con amor.</p>
+                    <h4 class="font-serif text-xl font-bold mb-2">Atención cercana</h4>
+                    <p class="text-gray-300 text-sm">Julieta elige productos artesanales e industriales confiables, con una atención personalizada.</p>
                 </div>
             </div>
         </div>
@@ -450,21 +814,25 @@
     <section id="coccion" class="py-16 scroll-mt-36 md:scroll-mt-28">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-8">
-                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Del freezer a la mesa</p>
-                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Cómo se cocinan</h2>
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Sorrentinos · 12 unidades</p>
+                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Método de cocción: hervidos</h2>
             </div>
             <ol class="space-y-3">
                 <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
                     <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">1</span>
-                    <p>Poné abundante agua a hervir y agregale sal. No las descongeles antes.</p>
+                    <p>Colocar agua en una olla a fuego fuerte hasta que hierva. Importante que borbotée.</p>
                 </li>
                 <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
                     <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">2</span>
-                    <p>Tirálas directo del freezer. Sorrentinos y farinatas: cuando flotan, un minuto más y probá una. Tiene que estar tierna en el centro.</p>
+                    <p>Introducir los sorrentinos congelados y revolver unos segundos.</p>
                 </li>
                 <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
                     <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">3</span>
-                    <p>Los fideos al huevo están antes: sacalos apenas flotan y quedan al dente. La salsa se prepara aparte.</p>
+                    <p>Cocinar durante 6/7 minutos, revolviendo cada tanto hasta que floten.</p>
+                </li>
+                <li class="bg-white rounded-2xl border border-red-100 p-4 flex gap-3">
+                    <span class="w-8 h-8 rounded-full bg-pasta-red text-white text-sm font-bold flex items-center justify-center shrink-0">4</span>
+                    <p>Retirarlos con espumadera para no romperlos. Listos para servir.</p>
                 </li>
             </ol>
         </div>
@@ -488,13 +856,94 @@
     </section>
     -->
 
+    <section id="nosotros" class="bg-white py-16 border-t border-gray-200 scroll-mt-36 md:scroll-mt-28">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">La casa</p>
+                    <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Soy Julieta</h2>
+                    <p class="text-gray-600 mt-4">Mamá y emprendedora. Casa del Sabor nació de mi deseo de reinsertarme en el mundo laboral a través de un proyecto propio, compatible con mi vida familiar y basado en algo que disfruto: acercar alimentos ricos, prácticos y de calidad a otros hogares.</p>
+                    <p class="text-gray-600 mt-4">Comencé ofreciendo pastas artesanales congeladas y, con el tiempo, surgió la idea de crear un espacio con mayor variedad: empanadas, panificados, supremas, milanesas, opciones vegetarianas, frutas, verduras y otros alimentos listos para conservar y preparar fácilmente.</p>
+                    <p class="text-gray-600 mt-4">Mi propósito es acompañar a las familias con soluciones prácticas para sus comidas cotidianas, brindando una atención cercana, responsable y personalizada.</p>
+                </div>
+                <img src="IMAGENES/logo-casa-del-sabor.png?v=2" alt="Casa del Sabor, productos congelados y seleccionados" class="w-full max-w-sm mx-auto">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                <article class="rounded-3xl border border-red-100 p-6">
+                    <h3 class="font-serif text-2xl font-bold text-pasta-red">Misión</h3>
+                    <p class="text-gray-600 mt-3">Ofrecer alimentos congelados ricos, variados y de calidad que faciliten la organización de las comidas diarias.</p>
+                    <p class="text-gray-600 mt-3">Seleccionamos productos artesanales e industriales confiables para que nuestros clientes puedan encontrar en un solo lugar alternativas prácticas para toda la familia. Complementamos la propuesta con aceites de oliva y vinos seleccionados, con una atención cálida y personalizada.</p>
+                </article>
+                <article class="rounded-3xl border border-red-100 p-6">
+                    <h3 class="font-serif text-2xl font-bold text-pasta-red">Visión</h3>
+                    <p class="text-gray-600 mt-3">Convertir a Casa del Sabor en una tienda reconocida y elegida por su variedad de alimentos congelados, la calidad de sus productos y la confianza de sus clientes.</p>
+                    <p class="text-gray-600 mt-3">Buscamos crecer de manera sostenida, incorporar nuevas opciones y acompañar las necesidades de cada familia, sin perder la cercanía, la responsabilidad y la dedicación que dieron origen a este emprendimiento.</p>
+                </article>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 mt-8 text-gray-700">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-location-dot text-pasta-red text-xl"></i>
+                    <span>San Juan, Argentina</span>
+                </div>
+                <a href="https://wa.me/5492644053993" class="flex items-center gap-3 text-pasta-green font-semibold">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>2644053993</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="rubros" class="py-16 scroll-mt-36 md:scroll-mt-28 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <p class="text-xs uppercase tracking-[0.28em] text-pasta-green font-semibold">Lo que vas a encontrar</p>
+                <h2 class="font-serif text-4xl font-bold text-pasta-red mt-2">Rubros</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Tocá un rubro para ver los productos y sumarlos al pedido.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <a href="#productos" data-ir-rubro="pastas" class="bg-pasta-red text-white rounded-2xl p-4 shadow-md">
+                    <p class="font-serif text-lg font-bold leading-tight">Pastas artesanales</p>
+                    <p class="text-xs text-white/80 mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="panificados" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Panificados</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="carnes" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Carnes y supremas</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="vegetarianos" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Productos vegetarianos</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="frutas" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Frutas y verduras</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="aceites" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Aceites y conservas</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="vinos" class="bg-white border border-red-100 rounded-2xl p-4 hover:border-pasta-red">
+                    <p class="font-serif text-lg font-bold leading-tight">Vinos seleccionados</p>
+                    <p class="text-xs text-pasta-red mt-2">Ver y pedir</p>
+                </a>
+                <a href="#productos" data-ir-rubro="congelados" class="bg-pasta-dark text-white rounded-2xl p-4">
+                    <p class="font-serif text-lg font-bold leading-tight">Congelados</p>
+                    <p class="text-xs text-white/70 mt-2">Ver y pedir</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="nosotros" class="bg-white pt-16 pb-8 border-t border-gray-200">
+    <footer class="bg-white pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
                 <div class="text-center md:text-left max-w-xl">
-                    <h2 class="font-serif text-3xl font-bold text-pasta-red mb-4">Juliet Pastas</h2>
-                    <p class="text-gray-600 mb-4">Somos un emprendimiento familiar dedicado a llevar a tu mesa los mejores sabores caseros. Nuestras pastas son elaboradas artesanalmente con recetas que combinan tradición y toques gourmet. <br><span class="font-medium text-pasta-green mt-2 inline-block"><i class="fa-solid fa-motorcycle mr-1"></i> Realizamos entregas a domicilio en distintos departamentos.</span></p>
+                    <h2 class="font-serif text-3xl font-bold text-pasta-red mb-4">Casa del Sabor</h2>
+                    <p class="text-gray-600 mb-4">Congelados y productos seleccionados. Sabor y practicidad para todos los días. <br><span class="font-medium text-pasta-green mt-2 inline-block"><i class="fa-solid fa-motorcycle mr-1"></i> La entrega se acuerda después de hacer el pedido.</span></p>
                     <div class="flex flex-col md:flex-row gap-4 mt-6">
                         <div class="flex items-center justify-center md:justify-start gap-3 text-gray-700">
                             <i class="fa-solid fa-location-dot text-pasta-red text-xl"></i>
@@ -510,7 +959,7 @@
             </div>
             
             <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-sm text-gray-500">© 2026 Juliet Pastas. Todos los derechos reservados. <a href="gestion/" class="ml-2 text-gray-400 hover:text-pasta-red">Gestión</a></p>
+                <p class="text-sm text-gray-500">© 2026 Casa del Sabor. Todos los derechos reservados. <a href="gestion/" class="ml-2 text-gray-400 hover:text-pasta-red">Gestión</a></p>
                 <div class="flex gap-4">
                     <a href="#" class="text-gray-400 hover:text-pasta-red transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
                     <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
@@ -849,7 +1298,7 @@
             const pedidos = Object.values(cart).filter((item) => item.quantity > 0);
             if (!pedidos.length) return;
             
-            let message = "¡Hola Juliet Pastas! 👋\nQuiero realizar el siguiente pedido:\n\n";
+            let message = "¡Hola Casa del Sabor! 👋\nQuiero realizar el siguiente pedido:\n\n";
             
             pedidos.forEach((item) => {
                 const valor = precioNumero(item.price);
@@ -894,7 +1343,28 @@
             osobuco: { seccion: 'Sorrentinos', masa: 'Masa de pimentón ahumado', precio: '$15.000', etiqueta: 'Gourmet', cart: 'Sorrentinos Osobuco al Malbec', extra: ['Bandeja de 12 unidades', 'Cocinado a fuego lento', 'Listo para congelar a -18°C'] },
             langostinos: { seccion: 'Sorrentinos', masa: 'Masa de cúrcuma', precio: '$16.000', etiqueta: 'Premium', cart: 'Sorrentinos Langostinos, ricota y cebolla', extra: ['Bandeja de 12 unidades', 'Con cebolla al verdeo', 'Listo para congelar a -18°C'] },
             farinatas: { seccion: 'Farinatas', masa: 'Masa al huevo', precio: '$12.000', etiqueta: '', cart: 'Farinatas', extra: ['Bandeja de 12 unidades', 'Arrolladas', 'Listas para congelar a -18°C'] },
-            fideos: { seccion: 'Fideos', masa: '500 g', precio: '$4.500', etiqueta: '', cart: 'Fideos al huevo 500 g', extra: ['Paquete de 500 g', 'Nidos artesanales', 'Listos para congelar a -18°C'] }
+            fideos: { seccion: 'Fideos', masa: '500 g', precio: '$4.500', etiqueta: '', cart: 'Fideos al huevo 500 g', extra: ['Paquete de 500 g', 'Nidos artesanales', 'Listos para congelar a -18°C'] },
+            'pan-campo': { seccion: 'Panificados', masa: '500 g', precio: '', cart: 'Pan de campo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y tostar, o llevar al horno.', extra: ['Producto de ejemplo', 'Listo para congelar'] },
+            medialunas: { seccion: 'Panificados', masa: '6 unidades', precio: '', cart: 'Medialunas de manteca x 6', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno directo desde el freezer, hasta que estén doradas.', extra: ['Producto de ejemplo'] },
+            'empanadas-jyq': { seccion: 'Panificados', masa: 'Docena', precio: '', cart: 'Empanadas de jamón y queso x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
+            supremas: { seccion: 'Carnes y supremas', masa: 'Pack x 2', precio: '', cart: 'Supremas de pollo x 2', rinde: 'Rinde para 2 personas, aprox.', coccion: 'Horno o sartén desde congeladas.', extra: ['Producto de ejemplo'] },
+            milanesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '', cart: 'Milanesas de nalga x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén, sin descongelar.', extra: ['Producto de ejemplo'] },
+            hamburguesas: { seccion: 'Carnes y supremas', masa: 'Pack x 4', precio: '', cart: 'Hamburguesas caseras x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Plancha o sartén, bien cocidas.', extra: ['Producto de ejemplo'] },
+            medallones: { seccion: 'Productos vegetarianos', masa: 'Pack x 4', precio: '', cart: 'Medallones de lentejas x 4', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno o sartén desde el freezer.', extra: ['Producto de ejemplo', 'Sin carne'] },
+            'empanadas-verdura': { seccion: 'Productos vegetarianos', masa: 'Docena', precio: '', cart: 'Empanadas de verdura x 12', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Horno fuerte, sin descongelar.', extra: ['Producto de ejemplo'] },
+            'tarta-zapallo': { seccion: 'Productos vegetarianos', masa: 'Familiar', precio: '', cart: 'Tarta de zapallo y queso', rinde: 'Rinde para 6 personas, aprox.', coccion: 'Horno desde el freezer hasta que gratine.', extra: ['Producto de ejemplo'] },
+            'mix-wok': { seccion: 'Frutas y verduras', masa: '500 g', precio: '', cart: 'Mix para salteado 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Saltear en sartén bien caliente, sin descongelar antes.', extra: ['Producto de ejemplo'] },
+            frutillas: { seccion: 'Frutas y verduras', masa: '400 g', precio: '', cart: 'Frutillas congeladas 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Usar congeladas en licuados, o descongelar para postre.', extra: ['Producto de ejemplo'] },
+            'pure-zapallo': { seccion: 'Frutas y verduras', masa: '500 g', precio: '', cart: 'Puré de zapallo 500 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Calentar al microondas o a baño maría.', extra: ['Producto de ejemplo'] },
+            oliva: { seccion: 'Aceites y conservas', masa: '500 ml', precio: '', cart: 'Aceite de oliva extra virgen 500 ml', coccion: '', extra: ['Producto de ejemplo', 'No va al freezer', 'Guardar en lugar fresco'] },
+            aceitunas: { seccion: 'Aceites y conservas', masa: '200 g', precio: '', cart: 'Aceitunas verdes 200 g', coccion: '', extra: ['Producto de ejemplo', 'Una vez abierto, heladera'] },
+            tomates: { seccion: 'Aceites y conservas', masa: '400 g', precio: '', cart: 'Tomates perita en conserva 400 g', coccion: '', extra: ['Producto de ejemplo', 'Para salsas'] },
+            malbec: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Malbec 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir fresco, no congelar'] },
+            syrah: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Syrah 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Selección de San Juan'] },
+            torrontes: { seccion: 'Vinos seleccionados', masa: '750 ml', precio: '', cart: 'Torrontés 750 ml', coccion: '', extra: ['Producto de ejemplo', 'Servir frío'] },
+            papas: { seccion: 'Congelados', masa: '500 g', precio: '', cart: 'Papas noisette 500 g', rinde: 'Rinde para 3 personas, aprox.', coccion: 'Horno fuerte, sin descongelar, hasta que doren.', extra: ['Producto de ejemplo'] },
+            'salsa-fileto': { seccion: 'Congelados', masa: '400 g', precio: '', cart: 'Salsa fileto 400 g', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar a fuego bajo.', extra: ['Producto de ejemplo'] },
+            guiso: { seccion: 'Congelados', masa: 'Porción familiar', precio: '', cart: 'Guiso de lentejas', rinde: 'Rinde para 4 personas, aprox.', coccion: 'Descongelar y calentar en olla o microondas.', extra: ['Producto de ejemplo'] }
         };
 
         /*
@@ -926,8 +1396,16 @@
             const img = card.querySelector('img');
             const nombre = card.querySelector('h3').textContent;
             const desc = card.querySelector('p.text-gray-600').textContent;
-            document.getElementById('producto-foto').src = img.src;
-            document.getElementById('producto-foto').alt = img.alt;
+            const foto = document.getElementById('producto-foto');
+            if (img) {
+                foto.src = img.src;
+                foto.alt = img.alt;
+                foto.classList.remove('hidden');
+            } else {
+                foto.removeAttribute('src');
+                foto.alt = '';
+                foto.classList.add('hidden');
+            }
             document.getElementById('producto-seccion').textContent = info.etiqueta ? `${info.seccion} · ${info.etiqueta}` : info.seccion;
             document.getElementById('producto-nombre').textContent = nombre;
             document.getElementById('producto-masa').textContent = info.masa;
@@ -935,14 +1413,18 @@
             precio.textContent = info.precio || 'Precio a confirmar';
             precio.classList.toggle('text-gray-400', !info.precio);
             document.getElementById('producto-desc').textContent = desc;
-            const coccion = info.seccion === 'Fideos'
-                ? 'Del freezer a agua hirviendo. Sacalo apenas flota.'
-                : 'Del freezer a agua hirviendo. Cuando flota, un minuto más.';
-            const rinde = info.seccion === 'Fideos' ? 'Rinde para 4 personas, aprox.' : 'Rinde para 2 personas, aprox.';
+            const coccion = info.coccion !== undefined
+                ? info.coccion
+                : (info.seccion === 'Sorrentinos'
+                    ? 'Hervidos: 6/7 minutos desde congelados, hasta que floten. Retirar con espumadera.'
+                    : 'Del freezer a agua hirviendo.');
+            const rinde = info.rinde !== undefined
+                ? info.rinde
+                : (info.seccion === 'Fideos' ? 'Rinde para 4 personas, aprox.' : 'Rinde para 2 personas, aprox.');
             const datos = [
-                { icono: 'fa-check', color: 'text-pasta-green', texto: rinde },
+                ...(rinde ? [{ icono: 'fa-check', color: 'text-pasta-green', texto: rinde }] : []),
                 ...info.extra.map((texto) => ({ icono: 'fa-check', color: 'text-pasta-green', texto })),
-                { icono: 'fa-fire', color: 'text-amber-600', texto: coccion }
+                ...(coccion ? [{ icono: 'fa-fire', color: 'text-amber-600', texto: coccion }] : [])
             ];
             document.getElementById('producto-datos').innerHTML = datos.map((linea) => `<li class="flex items-center gap-2"><i class="fa-solid ${linea.icono} ${linea.color} text-xs w-3 text-center"></i>${escHtml(linea.texto)}</li>`).join('');
             const precioArg = info.precio ? `, '${info.precio}'` : '';
@@ -1080,29 +1562,46 @@
             reiniciar();
         })();
 
-        (function marcarSeccion() {
-            const links = [...document.querySelectorAll('[data-seccion]')];
-            if (!links.length) return;
+        (function filtrarRubros() {
+            const botones = [...document.querySelectorAll('[data-rubro]')];
+            const paneles = [...document.querySelectorAll('[data-panel]')];
+            if (!botones.length || !paneles.length) return;
 
-            function marcar(id) {
-                links.forEach((link) => {
-                    const activa = link.getAttribute('href') === '#' + id;
-                    link.classList.toggle('bg-pasta-red', activa);
-                    link.classList.toggle('text-white', activa);
-                    link.classList.toggle('bg-white', !activa);
-                    link.classList.toggle('text-pasta-red', !activa);
+            function mostrarRubro(id) {
+                const rubro = paneles.some((panel) => panel.dataset.panel === id) ? id : 'pastas';
+                paneles.forEach((panel) => {
+                    panel.classList.toggle('hidden', panel.dataset.panel !== rubro);
+                });
+                botones.forEach((btn) => {
+                    const activa = btn.dataset.rubro === rubro;
+                    btn.classList.toggle('bg-pasta-red', activa);
+                    btn.classList.toggle('text-white', activa);
+                    btn.classList.toggle('shadow-md', activa);
+                    btn.classList.toggle('bg-white', !activa);
+                    btn.classList.toggle('text-pasta-red', !activa);
                 });
             }
 
-            const observer = new IntersectionObserver((entries) => {
-                const visible = entries.filter((entry) => entry.isIntersecting).pop();
-                if (visible) marcar(visible.target.id);
-            }, { rootMargin: '-45% 0px -45% 0px' });
-
-            links.forEach((link) => {
-                const seccion = document.querySelector(link.getAttribute('href'));
-                if (seccion) observer.observe(seccion);
+            botones.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    mostrarRubro(btn.dataset.rubro);
+                    document.getElementById('menu-rubros')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
             });
+
+            document.querySelectorAll('[data-ir-rubro]').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mostrarRubro(link.dataset.irRubro);
+                });
+            });
+
+            const hash = (location.hash || '').replace('#', '');
+            const desdeHash = {
+                pastas: 'pastas', sorrentinos: 'pastas', farinatas: 'pastas', fideos: 'pastas',
+                panificados: 'panificados', carnes: 'carnes', vegetarianos: 'vegetarianos',
+                frutas: 'frutas', aceites: 'aceites', vinos: 'vinos', congelados: 'congelados'
+            }[hash];
+            mostrarRubro(desdeHash || 'pastas');
         })();
     </script>
 </body>
