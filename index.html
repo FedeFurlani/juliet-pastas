@@ -98,7 +98,6 @@
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
                     <a href="#lista" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Pedido</a>
-                    <a href="#productos" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Tienda</a>
                     <a href="#coccion" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Cocción</a>
                     <!-- <a href="#resenas" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Reseñas</a> -->
                     <a href="#nosotros" class="text-pasta-dark hover:text-pasta-red px-3 py-2 rounded-md text-sm font-medium transition-colors">Nosotros</a>
@@ -248,27 +247,10 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="productos" class="relative scroll-mt-28">
+    <!-- Catálogo oculto: alimenta la lista de pedido (miniaturas y textos) -->
+    <section id="productos" class="hidden" aria-hidden="true">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="text-center mb-8">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-pasta-red mb-4">Armá tu pedido</h2>
-                <div class="h-1 w-24 bg-pasta-green mx-auto rounded"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto">Elegí un rubro y sumá productos a tu pedido.</p>
-            </div>
-
-            <div id="menu-rubros" class="sticky top-20 z-30 -mx-4 px-4 py-3 mb-8 bg-pasta-cream/95 backdrop-blur border-y border-red-100">
-                <div class="flex flex-wrap justify-center gap-2">
-                    <button type="button" data-rubro="pastas" class="rubro-btn bg-pasta-red text-white border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold shadow-md">Pastas</button>
-                    <button type="button" data-rubro="panificados" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Panificados</button>
-                    <button type="button" data-rubro="carnes" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Carnes</button>
-                    <button type="button" data-rubro="vegetarianos" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Vegetarianos</button>
-                    <button type="button" data-rubro="frutas" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Frutas</button>
-                    <button type="button" data-rubro="aceites" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Aceites</button>
-                    <button type="button" data-rubro="vinos" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Vinos</button>
-                    <button type="button" data-rubro="congelados" class="rubro-btn bg-white text-pasta-red border-2 border-pasta-red px-4 py-2 rounded-full text-sm font-semibold">Congelados</button>
-                </div>
-            </div>
+</div>
 
             <div id="pastas" data-panel="pastas" class="rubro-panel">
             <div class="flex flex-wrap justify-center gap-2 mb-8">
