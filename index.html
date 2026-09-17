@@ -78,8 +78,8 @@
             animation: pedido-pop .28s ease;
         }
         @keyframes pedido-pop {
-            from { transform: scale(.72); }
-            to { transform: scale(1); }
+            from { transform: translateX(-50%) scale(.72); }
+            to { transform: translateX(-50%) scale(1); }
         }
     </style>
 </head>
@@ -117,7 +117,7 @@
     <button id="pedido-flotante" type="button" onclick="toggleCart()" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 hidden items-center gap-2 bg-pasta-red text-white h-14 pl-4 pr-5 rounded-full shadow-2xl" aria-label="Ver pedido">
         <i class="fa-solid fa-basket-shopping text-lg"></i>
         <span class="font-semibold text-sm">Pedido</span>
-        <span id="flotante-cant" class="bg-yellow-400 text-pasta-dark text-xs font-bold min-w-[1.25rem] h-5 px-1 rounded-full inline-flex items-center justify-center">0</span>
+        <span id="flotante-cant" class="bg-yellow-400 text-pasta-dark text-xs font-bold min-w-[1.25rem] h-5 px-2 rounded-full inline-flex items-center justify-center">$0</span>
     </button>
 
     <div id="producto-modal" class="fixed inset-0 z-[60] hidden items-end sm:items-center justify-center bg-black/40 p-3 sm:p-6" onclick="if (event.target === this) cerrarProducto()">
@@ -1063,7 +1063,14 @@
             if (total > 0) {
                 countNav.innerText = total;
                 countNav.classList.remove('hidden');
-                if (flotanteCant) flotanteCant.innerText = total;
+                if (flotanteCant) {
+                    let suma = 0;
+                    Object.values(cart).forEach((item) => {
+                        const valor = precioNumero(item.price);
+                        if (valor !== null) suma += valor * item.quantity;
+                    });
+                    flotanteCant.innerText = suma > 0 ? formatoPesos(suma) : '—';
+                }
                 if (flotante) {
                     flotante.classList.remove('hidden');
                     flotante.classList.add('flex');
@@ -1287,6 +1294,13 @@
                 caja.classList.toggle('gap-2', Boolean(item) && !enLista);
                 if (enLista) {
                     const cant = item ? item.quantity : 0;
+                    const fila = caja.closest('[data-lista-item]');
+                    if (fila) {
+                        fila.classList.toggle('bg-red-100', cant > 0);
+                        fila.classList.toggle('border-l-4', cant > 0);
+                        fila.classList.toggle('border-l-pasta-red', cant > 0);
+                        fila.classList.toggle('shadow-sm', cant > 0);
+                    }
                     if (cant > 0) {
                         btn.innerHTML = '+';
                         btn.className = 'w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center shrink-0';
@@ -1484,12 +1498,13 @@
                         ? `<img src="${escHtml(foto)}" alt="" class="w-12 h-12 rounded-xl object-cover shrink-0 bg-gray-100">`
                         : `<span class="w-12 h-12 rounded-xl bg-red-50 text-pasta-red flex items-center justify-center shrink-0"><i class="fa-solid ${escHtml(icono)}"></i></span>`;
                     return `
-                        <div class="flex items-center gap-3 py-2.5 border-b border-red-100 last:border-0">
+                        <div data-lista-item="${id}" class="flex items-center gap-3 py-2.5 border-b border-red-100 last:border-0 -mx-3 px-3 transition-colors">
                             ${mini}
                             <div class="min-w-0 flex-1">
                                 <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
                                 ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
                                 <p class="text-sm font-bold ${precioClass} mt-1">${escHtml(precio)}</p>
+                                <button type="button" onclick="verProducto('${id}')" class="mt-1 text-xs font-semibold text-pasta-green hover:text-green-800 underline-offset-2 hover:underline">Ver</button>
                             </div>
                             <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
                                 <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
