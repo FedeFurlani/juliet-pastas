@@ -249,9 +249,6 @@
 
     <!-- Catálogo oculto: alimenta la lista de pedido (miniaturas y textos) -->
     <section id="productos" class="hidden" aria-hidden="true">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-</div>
-
             <div id="pastas" data-panel="pastas" class="rubro-panel">
             <div class="flex flex-wrap justify-center gap-2 mb-8">
                 <a href="#sorrentinos" class="bg-pasta-red text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md">Sorrentinos</a>
@@ -1742,48 +1739,6 @@
             }
             mostrar(0);
             reiniciar();
-        })();
-
-        (function filtrarRubros() {
-            const botones = [...document.querySelectorAll('[data-rubro]')];
-            const paneles = [...document.querySelectorAll('[data-panel]')];
-            if (!botones.length || !paneles.length) return;
-
-            function mostrarRubro(id) {
-                const rubro = paneles.some((panel) => panel.dataset.panel === id) ? id : 'pastas';
-                paneles.forEach((panel) => {
-                    panel.classList.toggle('hidden', panel.dataset.panel !== rubro);
-                });
-                botones.forEach((btn) => {
-                    const activa = btn.dataset.rubro === rubro;
-                    btn.classList.toggle('bg-pasta-red', activa);
-                    btn.classList.toggle('text-white', activa);
-                    btn.classList.toggle('shadow-md', activa);
-                    btn.classList.toggle('bg-white', !activa);
-                    btn.classList.toggle('text-pasta-red', !activa);
-                });
-            }
-
-            botones.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    mostrarRubro(btn.dataset.rubro);
-                    document.getElementById('menu-rubros')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                });
-            });
-
-            document.querySelectorAll('[data-ir-rubro]').forEach((link) => {
-                link.addEventListener('click', () => {
-                    mostrarRubro(link.dataset.irRubro);
-                });
-            });
-
-            const hash = (location.hash || '').replace('#', '');
-            const desdeHash = {
-                pastas: 'pastas', sorrentinos: 'pastas', farinatas: 'pastas', fideos: 'pastas',
-                panificados: 'panificados', carnes: 'carnes', vegetarianos: 'vegetarianos',
-                frutas: 'frutas', aceites: 'aceites', vinos: 'vinos', congelados: 'congelados'
-            }[hash];
-            mostrarRubro(desdeHash || 'pastas');
         })();
     </script>
 </body>
