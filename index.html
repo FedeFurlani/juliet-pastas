@@ -877,7 +877,7 @@
                     <p class="text-gray-600 mt-3">Buscamos crecer de manera sostenida, incorporar nuevas opciones y acompañar las necesidades de cada familia, sin perder la cercanía, la responsabilidad y la dedicación que dieron origen a este emprendimiento.</p>
                 </article>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 mt-8 text-gray-700">
+            <div class="flex flex-col sm:flex-row gap-4 mt-8 text-gray-700 justify-center items-center">
                 <div class="flex items-center gap-3">
                     <i class="fa-solid fa-location-dot text-pasta-red text-xl"></i>
                     <span>San Juan, Argentina</span>
@@ -941,13 +941,13 @@
                 <div class="text-center md:text-left max-w-xl">
                     <h2 class="font-serif text-3xl font-bold text-pasta-red mb-4">Casa del Sabor</h2>
                     <p class="text-gray-600 mb-4">Congelados y productos seleccionados. Sabor y practicidad para todos los días. <br><span class="font-medium text-pasta-green mt-2 inline-block"><i class="fa-solid fa-motorcycle mr-1"></i> La entrega se acuerda después de hacer el pedido.</span></p>
-                    <div class="flex flex-col md:flex-row gap-4 mt-6">
-                        <div class="flex items-center justify-center md:justify-start gap-3 text-gray-700">
+                    <div class="flex flex-col md:flex-row gap-4 mt-6 justify-center items-center">
+                        <div class="flex items-center gap-3 text-gray-700">
                             <i class="fa-solid fa-location-dot text-pasta-red text-xl"></i>
                             <span>San Juan, Argentina</span>
                         </div>
                         <div class="hidden md:block text-gray-300">|</div>
-                        <a href="https://wa.me/5492644053993" class="flex items-center justify-center md:justify-start gap-3 text-pasta-green font-semibold">
+                        <a href="https://wa.me/5492644053993" class="flex items-center gap-3 text-pasta-green font-semibold">
                             <i class="fa-brands fa-whatsapp text-xl"></i>
                             <span>2644053993</span>
                         </a>
@@ -1301,14 +1301,14 @@
                         }
                         marca.className = 'min-w-[1.5rem] text-center font-bold text-pasta-dark';
                         marca.textContent = String(cant);
-                        caja.className = 'flex items-center gap-1 shrink-0';
+                        caja.className = 'flex items-center justify-end gap-1 shrink-0 min-w-[7rem]';
                     } else {
                         if (quitarBtn) quitarBtn.remove();
                         if (marca) marca.remove();
                         [...caja.children].forEach((el) => {
                             if (el !== btn) el.remove();
                         });
-                        caja.className = 'flex items-center gap-1 shrink-0';
+                        caja.className = 'flex items-center justify-end gap-1 shrink-0 min-w-[7rem]';
                         btn.className = 'w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center shrink-0';
                         btn.textContent = '+';
                     }
@@ -1473,52 +1473,78 @@
             caja.innerHTML = orden.map((rubro) => {
                 const items = grupos[rubro] || [];
                 if (!items.length) return '';
-                const filas = items.map(({ id, info, nombre, foto, icono }) => {
-                    const precio = info.precio || 'A confirmar';
-                    const precioClass = info.precio ? 'text-pasta-red' : 'text-gray-400';
-                    const precioArg = info.precio ? `, '${info.precio}'` : '';
-                    const detalle = [info.seccion !== rubro ? info.seccion : '', info.masa].filter(Boolean).join(' · ');
-                    const mini = foto
-                        ? `<img src="${escHtml(foto)}" alt="" class="w-12 h-12 rounded-xl object-cover shrink-0 bg-gray-100">`
-                        : `<span class="w-12 h-12 rounded-xl bg-red-50 text-pasta-red flex items-center justify-center shrink-0"><i class="fa-solid ${escHtml(icono)}"></i></span>`;
-                    const card = document.querySelector(`[data-ver="${id}"]`);
-                    const desc = card ? (card.querySelector('p.text-gray-600')?.textContent.trim() || '') : '';
-                    const coccion = info.coccion !== undefined
-                        ? info.coccion
-                        : (info.seccion === 'Sorrentinos'
-                            ? 'Hervidos: 6/7 minutos desde congelados, hasta que floten. Retirar con espumadera.'
-                            : 'Del freezer a agua hirviendo.');
-                    const rinde = info.rinde !== undefined
-                        ? info.rinde
-                        : (info.seccion === 'Fideos' ? 'Rinde para 4 personas, aprox.' : 'Rinde para 2 personas, aprox.');
-                    const datos = [
-                        ...(rinde ? [rinde] : []),
-                        ...(info.extra || []),
-                        ...(coccion ? [coccion] : [])
-                    ];
-                    const datosHtml = datos.map((texto, i) => {
-                        const esCoccion = coccion && i === datos.length - 1 && texto === coccion;
-                        return `<li class="flex items-start gap-2"><i class="fa-solid ${esCoccion ? 'fa-fire text-amber-600' : 'fa-check text-pasta-green'} text-xs w-3 text-center mt-0.5"></i><span>${escHtml(texto)}</span></li>`;
+                const subsecciones = [];
+                const vistos = new Set();
+                items.forEach((item) => {
+                    const clave = item.info.seccion || rubro;
+                    if (!vistos.has(clave)) {
+                        vistos.add(clave);
+                        subsecciones.push(clave);
+                    }
+                });
+                const varias = subsecciones.length > 1;
+                const bloques = subsecciones.map((sub) => {
+                    const delSub = items.filter((item) => (item.info.seccion || rubro) === sub);
+                    const filas = delSub.map(({ id, info, nombre, foto, icono }) => {
+                        const precio = info.precio || 'A confirmar';
+                        const precioClass = info.precio ? 'text-pasta-red' : 'text-gray-400';
+                        const precioArg = info.precio ? `, '${info.precio}'` : '';
+                        const detalle = varias ? (info.masa || '') : [info.seccion !== rubro ? info.seccion : '', info.masa].filter(Boolean).join(' · ');
+                        const mini = foto
+                            ? `<button type="button" data-lista-ver="${id}" onclick="event.stopPropagation(); toggleListaInfo('${id}')" class="relative w-12 h-12 shrink-0 rounded-xl overflow-hidden block" aria-label="Ver detalle">
+                                    <img src="${escHtml(foto)}" alt="" class="w-full h-full object-cover bg-gray-100 pointer-events-none">
+                                    <span class="absolute inset-x-0 bottom-0 bg-pasta-dark/70 text-white text-[9px] font-semibold py-0.5 text-center leading-none pointer-events-none">Ver</span>
+                               </button>`
+                            : `<button type="button" data-lista-ver="${id}" onclick="event.stopPropagation(); toggleListaInfo('${id}')" class="relative w-12 h-12 shrink-0 rounded-xl overflow-hidden bg-red-50 text-pasta-red flex items-center justify-center" aria-label="Ver detalle">
+                                    <i class="fa-solid ${escHtml(icono)} pointer-events-none"></i>
+                                    <span class="absolute inset-x-0 bottom-0 bg-pasta-dark/70 text-white text-[9px] font-semibold py-0.5 text-center leading-none pointer-events-none">Ver</span>
+                               </button>`;
+                        const card = document.querySelector(`[data-ver="${id}"]`);
+                        const desc = card ? (card.querySelector('p.text-gray-600')?.textContent.trim() || '') : '';
+                        const coccion = info.coccion !== undefined
+                            ? info.coccion
+                            : (info.seccion === 'Sorrentinos'
+                                ? 'Hervidos: 6/7 minutos desde congelados, hasta que floten. Retirar con espumadera.'
+                                : 'Del freezer a agua hirviendo.');
+                        const rinde = info.rinde !== undefined
+                            ? info.rinde
+                            : (info.seccion === 'Fideos' ? 'Rinde para 4 personas, aprox.' : 'Rinde para 2 personas, aprox.');
+                        const datos = [
+                            ...(rinde ? [rinde] : []),
+                            ...(info.extra || []),
+                            ...(coccion ? [coccion] : [])
+                        ];
+                        const datosHtml = datos.map((texto, i) => {
+                            const esCoccion = coccion && i === datos.length - 1 && texto === coccion;
+                            return `<li class="flex items-start gap-2"><i class="fa-solid ${esCoccion ? 'fa-fire text-amber-600' : 'fa-check text-pasta-green'} text-xs w-3.5 text-center mt-0.5 shrink-0"></i><span>${escHtml(texto)}</span></li>`;
+                        }).join('');
+                        return `
+                            <div data-lista-item="${id}" class="border-b border-red-100 last:border-0 -mx-3 transition-colors cursor-pointer" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})">
+                                <div class="flex items-center gap-3 py-2.5 px-3">
+                                    ${mini}
+                                    <div class="min-w-0 flex-1">
+                                        <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
+                                        ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
+                                        <p class="text-sm font-bold ${precioClass} mt-1">${escHtml(precio)}</p>
+                                    </div>
+                                    <div data-controles="${id}" class="flex items-center justify-end gap-1 shrink-0 min-w-[7rem]" onclick="event.stopPropagation()">
+                                        <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
+                                    </div>
+                                </div>
+                                <div data-lista-detalle="${id}" class="hidden mx-3 mb-3 rounded-2xl border border-pasta-green/25 bg-gradient-to-br from-green-50 to-pasta-cream p-3.5 shadow-inner" onclick="event.stopPropagation()">
+                                    <p class="text-[10px] uppercase tracking-[0.2em] text-pasta-green font-semibold mb-2">Detalle</p>
+                                    ${desc ? `<p class="text-sm text-pasta-dark/80 leading-relaxed mb-3">${escHtml(desc)}</p>` : ''}
+                                    <ul class="space-y-1.5 text-xs text-pasta-dark/70">${datosHtml}</ul>
+                                </div>
+                            </div>`;
                     }).join('');
-                    return `
-                        <div data-lista-item="${id}" class="border-b border-red-100 last:border-0 -mx-3 transition-colors">
-                            <div class="flex items-center gap-3 py-2.5 px-3">
-                                ${mini}
-                                <div class="min-w-0 flex-1">
-                                    <p class="font-semibold text-pasta-dark leading-tight">${escHtml(nombre)}</p>
-                                    ${detalle ? `<p class="text-xs text-gray-500 mt-0.5">${escHtml(detalle)}</p>` : ''}
-                                    <button type="button" data-lista-ver="${id}" onclick="toggleListaInfo('${id}')" class="mt-1 text-xs font-semibold text-pasta-green hover:text-green-800 underline-offset-2 hover:underline">Ver</button>
-                                </div>
-                                <p class="shrink-0 text-sm font-bold ${precioClass}">${escHtml(precio)}</p>
-                                <div data-controles="${id}" class="flex items-center gap-1 shrink-0">
-                                    <button type="button" data-agregar="${id}" onclick="addToCart('${id}', '${info.cart.replace(/'/g, "\\'")}'${precioArg})" class="w-9 h-9 rounded-full bg-pasta-red text-white font-bold text-lg flex items-center justify-center">+</button>
-                                </div>
-                            </div>
-                            <div data-lista-detalle="${id}" class="hidden px-3 pb-3">
-                                ${desc ? `<p class="text-sm text-gray-600 mb-2">${escHtml(desc)}</p>` : ''}
-                                <ul class="space-y-1 text-xs text-gray-600">${datosHtml}</ul>
-                            </div>
-                        </div>`;
+                    const encabezado = varias
+                        ? `<div class="px-3 pt-3 pb-1 flex items-center gap-2">
+                                <span class="text-[11px] uppercase tracking-[0.18em] font-semibold text-pasta-red">${escHtml(sub)}</span>
+                                <span class="flex-1 border-t border-red-100"></span>
+                           </div>`
+                        : '';
+                    return `${encabezado}${filas}`;
                 }).join('');
                 const iconoCat = iconoRubro[rubro] || 'fa-utensils';
                 return `
@@ -1527,7 +1553,7 @@
                             <i class="fa-solid ${escHtml(iconoCat)} text-base"></i>
                             <span>${escHtml(rubro)}</span>
                         </div>
-                        <div class="bg-white border border-red-100 rounded-xl px-3">${filas}</div>
+                        <div class="bg-white border border-red-100 rounded-xl px-3 pb-1">${bloques}</div>
                     </div>`;
             }).join('');
             actualizarBotones();
@@ -1539,10 +1565,16 @@
             if (!detalle || !boton) return;
             const abierto = !detalle.classList.contains('hidden');
             document.querySelectorAll('[data-lista-detalle]').forEach((el) => el.classList.add('hidden'));
-            document.querySelectorAll('[data-lista-ver]').forEach((el) => { el.textContent = 'Ver'; });
+            document.querySelectorAll('[data-lista-ver]').forEach((el) => {
+                const etiqueta = el.querySelector('span');
+                if (etiqueta) etiqueta.textContent = 'Ver';
+                else el.textContent = 'Ver';
+            });
             if (!abierto) {
                 detalle.classList.remove('hidden');
-                boton.textContent = 'Ocultar';
+                const etiqueta = boton.querySelector('span');
+                if (etiqueta) etiqueta.textContent = '✕';
+                else boton.textContent = '✕';
             }
         }
 
